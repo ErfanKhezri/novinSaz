@@ -3,6 +3,7 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../../data/site";
 import { CartButton } from "../cart/CartButton";
+import { FavoritesLink } from "./FavoritesLink";
 import { ButtonLink } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
@@ -50,6 +51,7 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
+              <FavoritesLink />
               <CartButton />
               <ButtonLink to="/quote" variant="accent" className="hidden min-h-10 px-5 md:inline-flex">
                 پیش‌فاکتور

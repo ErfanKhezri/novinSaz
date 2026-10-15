@@ -2,10 +2,14 @@ import { MotionConfig } from "motion/react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { CartProvider } from "./context/CartContext";
+import { CompareProvider } from "./context/CompareContext";
+import { FavoritesProvider } from "./context/FavoritesContext";
 import { About } from "./pages/About";
 import { Cart } from "./pages/Cart";
+import { Compare } from "./pages/Compare";
 import { Contact } from "./pages/Contact";
 import { Exhibitions } from "./pages/Exhibitions";
+import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { PackageDetail } from "./pages/PackageDetail";
@@ -20,23 +24,29 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <CartProvider>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="products/:slug" element={<ProductDetail />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="packages" element={<Packages />} />
-            <Route path="packages/:slug" element={<PackageDetail />} />
-            <Route path="exhibitions" element={<Exhibitions />} />
-            <Route path="portfolio" element={<Portfolio />} />
-            <Route path="planner" element={<Planner />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="quote" element={<Quote />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+        <FavoritesProvider>
+          <CompareProvider>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="products/:slug" element={<ProductDetail />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="packages" element={<Packages />} />
+                <Route path="packages/:slug" element={<PackageDetail />} />
+                <Route path="exhibitions" element={<Exhibitions />} />
+                <Route path="portfolio" element={<Portfolio />} />
+                <Route path="planner" element={<Planner />} />
+                <Route path="favorites" element={<Favorites />} />
+                <Route path="compare" element={<Compare />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="quote" element={<Quote />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </CompareProvider>
+        </FavoritesProvider>
       </CartProvider>
     </MotionConfig>
   );

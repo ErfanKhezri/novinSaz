@@ -8,6 +8,8 @@ import { fourDaySaving } from "../../utils/rentalPrice";
 import { AddToCartButton } from "../cart/AddToCartButton";
 import { Badge } from "../ui/Badge";
 import { GlassPanel } from "../ui/GlassPanel";
+import { CompareToggle } from "./CompareToggle";
+import { FavoriteButton } from "./FavoriteButton";
 
 type ProductCardProps = { product: Product };
 
@@ -44,6 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
           variants={glassSheen}
           aria-hidden="true"
         />
+        <FavoriteButton productId={product.id} productName={product.name} className="absolute left-4 top-4 z-20" />
         <Link to={`/products/${product.slug}`} className="flex flex-1 flex-col rounded">
           <div className="relative aspect-[4/3] overflow-hidden rounded bg-navy-50">
             <motion.img
@@ -69,8 +72,9 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
         </Link>
-        <div className="relative px-2 pb-2">
-          <AddToCartButton productId={product.id} variant="outline" className="min-h-10 w-full text-small" />
+        <div className="relative flex items-center gap-3 px-2 pb-2">
+          <CompareToggle productId={product.id} productName={product.name} />
+          <AddToCartButton productId={product.id} variant="outline" className="min-h-10 flex-1 px-3 text-small" />
         </div>
       </GlassPanel>
     </div>

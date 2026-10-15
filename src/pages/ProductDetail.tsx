@@ -1,5 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { CompareToggle } from "../components/product/CompareToggle";
+import { FavoriteButton } from "../components/product/FavoriteButton";
 import { PriceTable } from "../components/product/PriceTable";
 import { RentalCalculator } from "../components/product/RentalCalculator";
 import { AddToCartButton } from "../components/cart/AddToCartButton";
@@ -86,7 +88,13 @@ export function ProductDetail() {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-start gap-3">
-                <Badge>{product.category}</Badge>
+                <div className="flex w-full items-center justify-between gap-3">
+                  <Badge>{product.category}</Badge>
+                  <div className="flex items-center gap-3">
+                    <CompareToggle productId={product.id} productName={product.name} />
+                    <FavoriteButton productId={product.id} productName={product.name} />
+                  </div>
+                </div>
                 <h1 className="text-h1 font-extrabold text-navy-900">{product.name}</h1>
                 <p className="text-lead text-muted">{product.description}</p>
               </div>

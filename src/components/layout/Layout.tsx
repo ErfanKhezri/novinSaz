@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { pageFade } from "../../utils/motion";
 import { CartDrawer } from "../cart/CartDrawer";
+import { CompareBar } from "../product/CompareBar";
 import { BackgroundBlobs } from "./BackgroundBlobs";
 import { FloatingActions } from "./FloatingActions";
 import { Footer } from "./Footer";
@@ -28,6 +29,7 @@ export function Layout() {
         <Footer />
         <FloatingActions />
       </div>
+      <CompareBar />
       <CartDrawer />
     </div>
   );
