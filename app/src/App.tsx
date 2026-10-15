@@ -1,3 +1,12 @@
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./components/layout/Layout";
+
 export default function App() {
-  return <main className="p-6">نوین ساز</main>;
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="*" element={null} />
+      </Route>
+    </Routes>
+  );
 }
