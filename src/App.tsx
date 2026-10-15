@@ -7,6 +7,8 @@ import { Cart } from "./pages/Cart";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+import { PackageDetail } from "./pages/PackageDetail";
+import { Packages } from "./pages/Packages";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Quote } from "./pages/Quote";
 import { Products } from "./pages/Products";
@@ -22,6 +24,8 @@ export default function App() {
             <Route path="products/:slug" element={<ProductDetail />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="packages" element={<Packages />} />
+            <Route path="packages/:slug" element={<PackageDetail />} />
             <Route path="cart" element={<Cart />} />
             <Route path="quote" element={<Quote />} />
             <Route path="*" element={<NotFound />} />

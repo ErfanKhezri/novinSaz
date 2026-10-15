@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { packages } from "../data/packages";
 import { products } from "../data/products";
 import { CartContext, type CartItem, type CartLine, type CartValue } from "../hooks/useCart";
 import { daysBetween } from "../utils/jalali";
@@ -35,7 +36,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const product = products.find((p) => p.id === item.productId);
     if (!product) return [];
     const rental = rentalPrice(product, days, item.quantity);
-    const discountPercent = 0;
+    const discountPercent = packages.find((pack) => pack.id === item.packageId)?.discountPercent ?? 0;
     return [
       {
         ...item,
@@ -47,6 +48,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       },
     ];
   });
+
+  const addItem = (productId: string, quantity = 1, packageId?: string) =>
+    setCart((current) => {
+      const existing = current.items.find((item) => sameLine(item, productId, packageId));
+      const items = existing
+        ? current.items.map((item) => (item === existing ? { ...item, quantity: item.quantity + quantity } : item))
+        : [...current.items, { productId, quantity, packageId }];
+      return { ...current, items };
+    });
 
   const setQuantity = (productId: string, quantity: number, packageId?: string) =>
     setCart((current) => ({
@@ -71,14 +81,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     isDrawerOpen,
     openDrawer: () => setIsDrawerOpen(true),
     closeDrawer: () => setIsDrawerOpen(false),
-    addItem: (productId, quantity = 1, packageId) =>
-      setCart((current) => {
-        const existing = current.items.find((item) => sameLine(item, productId, packageId));
-        const items = existing
-          ? current.items.map((item) => (item === existing ? { ...item, quantity: item.quantity + quantity } : item))
-          : [...current.items, { productId, quantity, packageId }];
-        return { ...current, items };
-      }),
+    addItem,
+    addPackage: (packageId) =>
+      packages
+        .find((pack) => pack.id === packageId)
+        ?.items.forEach((item) => addItem(item.productId, item.quantity, packageId)),
     setQuantity,
     removeItem: (productId, packageId) => setQuantity(productId, 0, packageId),
     setDates: (startDate, endDate) => setCart((current) => ({ ...current, startDate, endDate })),

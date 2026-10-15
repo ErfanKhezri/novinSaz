@@ -32,6 +32,7 @@ export type CartValue = {
   openDrawer: () => void;
   closeDrawer: () => void;
   addItem: (productId: string, quantity?: number, packageId?: string) => void;
+  addPackage: (packageId: string) => void;
   setQuantity: (productId: string, quantity: number, packageId?: string) => void;
   removeItem: (productId: string, packageId?: string) => void;
   setDates: (startDate: string | null, endDate: string | null) => void;

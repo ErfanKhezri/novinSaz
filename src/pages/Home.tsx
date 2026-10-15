@@ -1,17 +1,18 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { BoothPackages } from "../components/home/BoothPackages";
 import { CategoryIcon } from "../components/home/CategoryIcon";
 import { Faq } from "../components/home/Faq";
 import { Hero } from "../components/home/Hero";
 import { HowItWorks } from "../components/home/HowItWorks";
 import { ProductMarquee } from "../components/home/ProductMarquee";
 import { UseCaseTabs } from "../components/home/UseCaseTabs";
+import { PackageCard } from "../components/package/PackageCard";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { ButtonAnchor, ButtonLink } from "../components/ui/Button";
 import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
+import { packages } from "../data/packages";
 import { categories, featuredSlugs, products } from "../data/products";
 import { site } from "../data/site";
 import { formatNumber } from "../utils/formatPrice";
@@ -54,8 +55,26 @@ export function Home() {
 
       <Section>
         <Container>
-          <SectionTitle title="بسته‌های آماده غرفه" subtitle="چند محصول که معمولاً با هم اجاره می‌شوند؛ با یک کلیک به لیست اضافه کنید" />
-          <BoothPackages />
+          <SectionTitle title="پکیج‌های آماده غرفه" subtitle="چند محصول که معمولاً با هم اجاره می‌شوند؛ یکجا و با تخفیف" />
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {packages.slice(0, 3).map((pack, index) => (
+              <motion.li
+                key={pack.id}
+                custom={index}
+                variants={staggeredFadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+              >
+                <PackageCard pack={pack} />
+              </motion.li>
+            ))}
+          </ul>
+          <div className="mt-10 text-center">
+            <ButtonLink to="/packages" variant="outline">
+              همه پکیج‌ها
+            </ButtonLink>
+          </div>
         </Container>
       </Section>
 
