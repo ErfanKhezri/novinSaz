@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { boothPackages } from "../../data/home";
 import { products } from "../../data/products";
-import { useRentalList } from "../../hooks/useRentalList";
+import { useCart } from "../../hooks/useCart";
 import { formatNumber, formatPrice } from "../../utils/formatPrice";
 import { staggeredFadeUp } from "../../utils/motion";
-import { rentalCost } from "../../utils/pricing";
+import { rentalPrice } from "../../utils/rentalPrice";
 import { Badge } from "../ui/Badge";
 import { Button } from "../ui/Button";
 import { GlassPanel } from "../ui/GlassPanel";
@@ -13,18 +13,18 @@ import { GlassPanel } from "../ui/GlassPanel";
 function packagePrice(items: { slug: string; quantity: number }[], days: number) {
   return items.reduce((sum, item) => {
     const product = products.find((p) => p.slug === item.slug)!;
-    return sum + rentalCost(product, days, item.quantity);
+    return sum + rentalPrice(product, days, item.quantity).price;
   }, 0);
 }
 
 export function BoothPackages() {
-  const { add, open } = useRentalList();
+  const { addItem, openDrawer } = useCart();
   const [addedName, setAddedName] = useState("");
 
   const addPackage = (name: string, items: { slug: string; quantity: number }[]) => {
-    items.forEach((item) => add(item.slug, item.quantity));
+    items.forEach((item) => addItem(products.find((p) => p.slug === item.slug)!.id, item.quantity));
     setAddedName(name);
-    setTimeout(open, 350);
+    setTimeout(openDrawer, 350);
   };
 
   return (

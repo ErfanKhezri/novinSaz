@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { PriceTable } from "../components/product/PriceTable";
 import { RentalCalculator } from "../components/product/RentalCalculator";
+import { AddToCartButton } from "../components/cart/AddToCartButton";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { Badge } from "../components/ui/Badge";
 import { ButtonAnchor } from "../components/ui/Button";
@@ -9,12 +10,14 @@ import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { products } from "../data/products";
 import { site } from "../data/site";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { whatsappLink } from "../utils/whatsapp";
 import { NotFound } from "./NotFound";
 
 export function ProductDetail() {
   const { slug } = useParams();
   const product = products.find((item) => item.slug === slug);
+  usePageMeta(product?.name ?? "محصول پیدا نشد", product?.description);
 
   if (!product) return <NotFound />;
 
@@ -55,9 +58,12 @@ export function ProductDetail() {
 
               <PriceTable pricePerDay={product.pricePerDay} pricePer4Days={product.pricePer4Days} />
 
-              <ButtonAnchor href={whatsappLink(message)} target="_blank" rel="noreferrer" variant="accent">
-                ثبت درخواست اجاره
-              </ButtonAnchor>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <AddToCartButton productId={product.id} variant="primary" />
+                <ButtonAnchor href={whatsappLink(message)} target="_blank" rel="noreferrer" variant="accent">
+                  ثبت درخواست اجاره
+                </ButtonAnchor>
+              </div>
 
               <RentalCalculator product={product} />
 

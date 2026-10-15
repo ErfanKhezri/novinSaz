@@ -21,3 +21,53 @@
     scroll-behavior: auto;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    @apply bg-paper;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* Jalali date picker in brand colours */
+@layer components {
+  .rmdp-wrapper {
+    @apply rounded-lg border border-line font-sans shadow-glass-strong;
+  }
+
+  .rmdp-week-day {
+    @apply text-muted;
+  }
+
+  .rmdp-arrow {
+    @apply border-navy-900;
+  }
+
+  .rmdp-arrow-container:hover {
+    @apply bg-navy-900;
+  }
+
+  .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+    @apply bg-navy-100 text-navy-900;
+  }
+
+  .rmdp-day.rmdp-today span {
+    @apply bg-gold-50 font-bold text-navy-900;
+  }
+
+  .rmdp-range {
+    @apply bg-navy-100 text-navy-900 shadow-none;
+  }
+
+  .rmdp-range.start,
+  .rmdp-range.end,
+  .rmdp-day.rmdp-selected span:not(.highlight) {
+    @apply bg-navy-900 text-paper shadow-none;
+  }
+}

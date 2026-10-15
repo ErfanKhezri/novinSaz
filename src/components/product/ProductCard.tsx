@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import type { Product } from "../../types/product";
 import { formatPrice } from "../../utils/formatPrice";
 import { glassSheen } from "../../utils/motion";
-import { fourDaySaving } from "../../utils/pricing";
-import { AddToListButton } from "../rental/AddToListButton";
+import { fourDaySaving } from "../../utils/rentalPrice";
+import { AddToCartButton } from "../cart/AddToCartButton";
 import { Badge } from "../ui/Badge";
 import { GlassPanel } from "../ui/GlassPanel";
 
@@ -70,7 +70,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </Link>
         <div className="relative px-2 pb-2">
-          <AddToListButton slug={product.slug} variant="outline" className="min-h-10 w-full text-small" />
+          <AddToCartButton productId={product.id} variant="outline" className="min-h-10 w-full text-small" />
         </div>
       </GlassPanel>
     </div>

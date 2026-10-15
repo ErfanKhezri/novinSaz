@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { Product } from "../../types/product";
 import { formatNumber, formatPrice } from "../../utils/formatPrice";
-import { rentalCost } from "../../utils/pricing";
-import { AddToListButton } from "../rental/AddToListButton";
+import { breakdownLabel, rentalPrice } from "../../utils/rentalPrice";
+import { AddToCartButton } from "../cart/AddToCartButton";
 import { AnimatedNumber } from "../ui/AnimatedNumber";
 import { GlassPanel } from "../ui/GlassPanel";
 import { Stepper } from "../ui/Stepper";
@@ -12,8 +12,9 @@ type RentalCalculatorProps = { product: Product };
 export function RentalCalculator({ product }: RentalCalculatorProps) {
   const [quantity, setQuantity] = useState(1);
   const [days, setDays] = useState(4);
-  const total = rentalCost(product, days, quantity);
-  const dailyOnly = product.pricePerDay * days * quantity;
+  const rental = rentalPrice(product, days, quantity);
+  const total = rental.price;
+  const dailyOnly = rental.dailyOnlyPrice;
 
   return (
     <GlassPanel variant="strong" className="space-y-5 p-5">
@@ -31,6 +32,7 @@ export function RentalCalculator({ product }: RentalCalculatorProps) {
       <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-lg bg-navy-900 p-4 text-paper">
         <span>
           {formatNumber(quantity)} عدد برای {formatNumber(days)} روز
+          <span className="block text-caption text-navy-100">{breakdownLabel(rental)}</span>
         </span>
         <span className="text-h2 font-extrabold">
           <AnimatedNumber value={total} /> <span className="text-small font-medium">تومان</span>
@@ -41,7 +43,7 @@ export function RentalCalculator({ product }: RentalCalculatorProps) {
           با بسته‌های چهار روزه {formatPrice(dailyOnly - total)} کمتر از نرخ روزانه می‌پردازید.
         </p>
       )}
-      <AddToListButton slug={product.slug} quantity={quantity} variant="primary" className="w-full" />
+      <AddToCartButton productId={product.id} quantity={quantity} variant="primary" className="w-full" />
     </GlassPanel>
   );
 }

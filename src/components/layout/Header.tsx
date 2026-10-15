@@ -3,7 +3,7 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../../data/site";
 import { whatsappLink } from "../../utils/whatsapp";
-import { RentalListButton } from "../rental/RentalListButton";
+import { CartButton } from "../cart/CartButton";
 import { ButtonAnchor } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
@@ -51,7 +51,7 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <RentalListButton />
+              <CartButton />
               <ButtonAnchor
                 href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
                 target="_blank"
