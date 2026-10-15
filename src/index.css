@@ -71,3 +71,13 @@
     @apply bg-navy-900 text-paper shadow-none;
   }
 }
+
+/* Booth planner floor: one line every grid cell (cell size is set inline from the scale) */
+@layer components {
+  .planner-grid {
+    background-color: theme(colors.navy.50);
+    background-image:
+      linear-gradient(to right, theme(colors.navy.900 / 12%) 1px, transparent 1px),
+      linear-gradient(to bottom, theme(colors.navy.900 / 12%) 1px, transparent 1px);
+  }
+}

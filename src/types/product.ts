@@ -8,4 +8,7 @@ export type Product = {
   pricePerDay: number;
   pricePer4Days: number;
   image: string;
+  /** Footprint seen from above, used by the booth planner. */
+  widthCm: number;
+  depthCm: number;
 };
