@@ -3,6 +3,7 @@ import { Button } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
 import { Container } from "../components/ui/Container";
 import { Input } from "../components/ui/Input";
+import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { Textarea } from "../components/ui/Textarea";
 import { site } from "../data/site";
@@ -37,7 +38,7 @@ export function Contact() {
   };
 
   return (
-    <section className="py-section-sm sm:py-section">
+    <Section>
       <Container>
         <SectionTitle
           as="h1"
@@ -90,6 +91,6 @@ export function Contact() {
           </Card>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

@@ -2,7 +2,9 @@ import { useSearchParams } from "react-router-dom";
 import { CategoryFilter } from "../components/product/CategoryFilter";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { Container } from "../components/ui/Container";
+import { GlassPanel } from "../components/ui/GlassPanel";
 import { Input } from "../components/ui/Input";
+import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { categories, products } from "../data/products";
 
@@ -24,7 +26,7 @@ export function Products() {
   );
 
   return (
-    <section className="py-section-sm sm:py-section">
+    <Section>
       <Container>
         <SectionTitle
           as="h1"
@@ -32,7 +34,10 @@ export function Products() {
           subtitle="قیمت‌ها برای اجاره روزانه است؛ قیمت بسته چهار روزه را در صفحه هر محصول ببینید."
         />
 
-        <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <GlassPanel
+          variant="strong"
+          className="z-30 mb-8 flex flex-col gap-4 p-4 lg:sticky lg:top-20 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div className="lg:w-80">
             <Input
               id="search"
@@ -48,16 +53,16 @@ export function Products() {
             active={category}
             onChange={(value) => updateParam("category", value)}
           />
-        </div>
+        </GlassPanel>
 
         {visible.length > 0 ? (
-          <ProductGrid key={category + query} products={visible} />
+          <ProductGrid products={visible} />
         ) : (
-          <p className="rounded-lg border border-line bg-canvas py-16 text-center text-muted">
+          <p className="rounded-lg border border-line bg-paper py-16 text-center text-muted">
             محصولی با این مشخصات پیدا نشد.
           </p>
         )}
       </Container>
-    </section>
+    </Section>
   );
 }

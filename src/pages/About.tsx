@@ -1,6 +1,7 @@
 import { ButtonLink } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
 import { Container } from "../components/ui/Container";
+import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { site } from "../data/site";
 
@@ -21,8 +22,8 @@ const reasons = [
 export function About() {
   return (
     <>
-      <section className="border-b border-line bg-canvas">
-        <Container className="py-section text-center">
+      <Section>
+        <Container className="text-center">
           <h1 className="text-h1 font-extrabold text-navy-900 sm:text-display">درباره {site.name}</h1>
           <p className="mx-auto mt-5 max-w-prose text-lead text-muted">
             {site.name} مبلمان و تجهیزات موردنیاز غرفه‌های نمایشگاهی و شرکت‌ها را به‌صورت روزانه و چهار
@@ -30,9 +31,9 @@ export function About() {
             وسایل، فضایی مرتب و حرفه‌ای برای معرفی کسب‌وکارشان داشته باشند.
           </p>
         </Container>
-      </section>
+      </Section>
 
-      <section className="py-section">
+      <Section solid>
         <Container>
           <SectionTitle title="خدمات ما" />
           <ul className="grid gap-5 sm:grid-cols-2">
@@ -46,9 +47,9 @@ export function About() {
             ))}
           </ul>
         </Container>
-      </section>
+      </Section>
 
-      <section className="bg-canvas py-section">
+      <Section>
         <Container>
           <SectionTitle title="چرا نوین ساز؟" />
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -68,7 +69,7 @@ export function About() {
             </ButtonLink>
           </div>
         </Container>
-      </section>
+      </Section>
     </>
   );
 }

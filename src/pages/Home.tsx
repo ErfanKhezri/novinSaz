@@ -3,6 +3,7 @@ import { ProductGrid } from "../components/product/ProductGrid";
 import { ButtonAnchor, ButtonLink } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
 import { Container } from "../components/ui/Container";
+import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { categories, featuredSlugs, products } from "../data/products";
 import { site } from "../data/site";
@@ -20,16 +21,16 @@ const featured = products.filter((product) => featuredSlugs.includes(product.slu
 export function Home() {
   return (
     <>
-      <section className="border-b border-line bg-canvas">
-        <Container className="flex flex-col items-center py-section text-center">
-          <h1 className="max-w-3xl animate-fade-up text-h1 font-extrabold tracking-tight text-navy-900 sm:text-display">
+      <Section className="!pb-section-sm">
+        <Container className="flex flex-col items-center py-section-sm text-center">
+          <h1 className="max-w-3xl text-h1 font-extrabold tracking-tight text-navy-900 sm:text-display">
             اجاره مبلمان و تجهیزات برای غرفه نمایشگاهی
           </h1>
-          <p className="mt-5 max-w-prose animate-fade-up text-lead text-muted [animation-delay:100ms]">
+          <p className="mt-5 max-w-prose text-lead text-muted">
             کانتر، صندلی، مبلمان، تلویزیون و پاراوان برای نمایشگاه، شوروم و اتاق جلسه؛ با اجاره روزانه
             یا بسته چهار روزه و تحویل در محل.
           </p>
-          <div className="mt-8 flex w-full animate-fade-up flex-col gap-3 [animation-delay:200ms] sm:w-auto sm:flex-row">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <ButtonLink to="/products" variant="primary">
               مشاهده محصولات
             </ButtonLink>
@@ -43,9 +44,9 @@ export function Home() {
             </ButtonAnchor>
           </div>
         </Container>
-      </section>
+      </Section>
 
-      <section className="py-section">
+      <Section>
         <Container>
           <SectionTitle title="محصولات پرطرفدار" subtitle="رایج‌ترین انتخاب‌ها برای چیدمان غرفه" />
           <ProductGrid products={featured} />
@@ -55,9 +56,9 @@ export function Home() {
             </ButtonLink>
           </div>
         </Container>
-      </section>
+      </Section>
 
-      <section className="bg-canvas py-section">
+      <Section solid>
         <Container>
           <SectionTitle title="دسته‌بندی‌ها" subtitle="محصول مورد نیازتان را سریع‌تر پیدا کنید" />
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -76,9 +77,9 @@ export function Home() {
             })}
           </ul>
         </Container>
-      </section>
+      </Section>
 
-      <section className="py-section">
+      <Section>
         <Container>
           <SectionTitle title="اجاره در سه مرحله" subtitle="بدون دردسر، از انتخاب تا جمع‌آوری" />
           <ol className="grid gap-5 md:grid-cols-3">
@@ -95,9 +96,9 @@ export function Home() {
             ))}
           </ol>
         </Container>
-      </section>
+      </Section>
 
-      <section className="bg-canvas py-section">
+      <Section solid>
         <Container className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <h2 className="text-h2 font-extrabold text-navy-900 sm:text-h1">درباره {site.name}</h2>
@@ -116,12 +117,12 @@ export function Home() {
             loading="lazy"
             width={800}
             height={600}
-            className="w-full rounded-lg border border-line"
+            className="w-full rounded-lg border border-line bg-navy-50"
           />
         </Container>
-      </section>
+      </Section>
 
-      <section className="py-section">
+      <Section>
         <Container>
           <div className="flex flex-col items-center rounded-lg bg-navy-900 px-6 py-section-sm text-center">
             <h2 className="text-h2 font-extrabold text-paper">برای رویداد بعدی‌تان آماده‌اید؟</h2>
@@ -138,7 +139,7 @@ export function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </Section>
     </>
   );
 }

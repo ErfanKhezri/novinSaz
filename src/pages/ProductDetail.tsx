@@ -4,6 +4,7 @@ import { ProductGrid } from "../components/product/ProductGrid";
 import { Badge } from "../components/ui/Badge";
 import { ButtonAnchor } from "../components/ui/Button";
 import { Container } from "../components/ui/Container";
+import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { products } from "../data/products";
 import { site } from "../data/site";
@@ -25,7 +26,7 @@ export function ProductDetail() {
 
   return (
     <>
-      <section className="py-section-sm">
+      <Section className="sm:!py-section-sm">
         <Container>
           <nav aria-label="مسیر" className="mb-6 text-small text-muted">
             <Link to="/products" className="hover:text-navy-900">
@@ -41,10 +42,10 @@ export function ProductDetail() {
               alt={product.name}
               width={800}
               height={600}
-              className="w-full animate-fade-up rounded-lg border border-line bg-navy-50"
+              className="w-full rounded-lg border border-line bg-navy-50"
             />
 
-            <div className="flex animate-fade-up flex-col gap-6 [animation-delay:100ms]">
+            <div className="flex flex-col gap-6">
               <div className="flex flex-col items-start gap-3">
                 <Badge>{product.category}</Badge>
                 <h1 className="text-h1 font-extrabold text-navy-900">{product.name}</h1>
@@ -59,7 +60,7 @@ export function ProductDetail() {
 
               <div>
                 <h2 className="mb-3 text-h3 font-bold text-navy-900">مشخصات</h2>
-                <dl className="divide-y divide-line rounded-lg border border-line">
+                <dl className="divide-y divide-line rounded-lg border border-line bg-paper">
                   {product.specs.map((spec) => (
                     <div key={spec.label} className="flex justify-between gap-4 px-4 py-3">
                       <dt className="text-muted">{spec.label}</dt>
@@ -71,14 +72,14 @@ export function ProductDetail() {
             </div>
           </div>
         </Container>
-      </section>
+      </Section>
 
-      <section className="bg-canvas py-section">
+      <Section>
         <Container>
           <SectionTitle title="محصولات مرتبط" />
           <ProductGrid products={related} />
         </Container>
-      </section>
+      </Section>
     </>
   );
 }
