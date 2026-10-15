@@ -27,7 +27,7 @@ const stats = [
 
 const floatingChips = [
   { text: "تحویل و چیدمان در غرفه", className: "right-0 top-6", delay: 1.6 },
-  { text: `صندلی از ${formatNumber(cheapest)} تومان`, className: "left-0 top-1/3", delay: 1.9 },
+  { text: `صندلی از ${formatNumber(cheapest)} تومان`, className: "left-0 top-0", delay: 1.9 },
   { text: "بسته ۴ روزه = قیمت ۳ روز", className: "bottom-6 right-1/4", delay: 2.2 },
 ];
 
@@ -146,7 +146,7 @@ export function Hero() {
           </dl>
         </motion.div>
 
-        <motion.div style={{ y: sceneY }} className="relative [perspective:1200px]">
+        <motion.div style={{ y: sceneY }} className="relative order-first mx-auto w-full max-w-sm [perspective:1200px] lg:order-none lg:max-w-none">
           <motion.div
             style={{ rotateX, rotateY }}
             animate={{ y: [0, -12, 0] }}
