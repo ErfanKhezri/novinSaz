@@ -20,6 +20,7 @@ import { upcomingExhibitions } from "../utils/exhibitions";
 import { formatNumber } from "../utils/formatPrice";
 import { staggeredFadeUp } from "../utils/motion";
 import { whatsappLink } from "../utils/whatsapp";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const featured = products.filter((product) => featuredSlugs.includes(product.slug)).slice(0, 3);
 
@@ -31,6 +32,7 @@ const promises = [
 ];
 
 export function Home() {
+  usePageMeta();
   return (
     <>
       <Hero />

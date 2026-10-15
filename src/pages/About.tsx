@@ -4,6 +4,7 @@ import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { site } from "../data/site";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const services = [
   { title: "تجهیز غرفه نمایشگاهی", text: "کانتر، صندلی، مبلمان، میز و پاراوان برای غرفه‌های هر اندازه." },
@@ -20,6 +21,7 @@ const reasons = [
 ];
 
 export function About() {
+  usePageMeta("درباره ما");
   return (
     <>
       <Section>

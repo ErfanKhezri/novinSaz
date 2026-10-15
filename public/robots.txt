@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /cart
+Disallow: /quote
+Disallow: /favorites
+Disallow: /compare
+
+Sitemap: https://novinsaz.ir/sitemap.xml

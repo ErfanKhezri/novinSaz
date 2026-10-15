@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { MotionConfig } from "motion/react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
@@ -5,7 +6,6 @@ import { CartProvider } from "./context/CartContext";
 import { CompareProvider } from "./context/CompareContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { About } from "./pages/About";
-import { Cart } from "./pages/Cart";
 import { Compare } from "./pages/Compare";
 import { Contact } from "./pages/Contact";
 import { Exhibitions } from "./pages/Exhibitions";
@@ -16,9 +16,12 @@ import { PackageDetail } from "./pages/PackageDetail";
 import { Packages } from "./pages/Packages";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Quote } from "./pages/Quote";
-import { Planner } from "./pages/Planner";
 import { Portfolio } from "./pages/Portfolio";
 import { Products } from "./pages/Products";
+
+// Heavy pages (drag and drop, date picker) load on demand.
+const Cart = lazy(() => import("./pages/Cart").then((module) => ({ default: module.Cart })));
+const Planner = lazy(() => import("./pages/Planner").then((module) => ({ default: module.Planner })));
 
 export default function App() {
   return (

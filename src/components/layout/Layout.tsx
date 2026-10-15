@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { pageFade } from "../../utils/motion";
@@ -22,7 +23,7 @@ export function Layout() {
       </div>
       <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
         <motion.main key={pathname} className="flex-1" variants={pageFade} initial="initial" animate="animate" exit="exit">
-          {outlet}
+          <Suspense fallback={<p className="py-section text-center text-muted">در حال بارگذاری…</p>}>{outlet}</Suspense>
         </motion.main>
       </AnimatePresence>
       <div className="print:hidden">

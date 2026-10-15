@@ -8,6 +8,7 @@ import { SectionTitle } from "../components/ui/SectionTitle";
 import { Textarea } from "../components/ui/Textarea";
 import { site } from "../data/site";
 import { whatsappLink } from "../utils/whatsapp";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const contactItems = [
   { label: "تلفن", value: site.phone, href: site.phoneLink },
@@ -18,6 +19,7 @@ const contactItems = [
 ];
 
 export function Contact() {
+  usePageMeta("تماس با ما", "تلفن، واتس‌اپ، نشانی و ساعت کاری نوین ساز برای استعلام اجاره مبلمان نمایشگاهی.");
   const [form, setForm] = useState({ name: "", phone: "", company: "", message: "" });
 
   const update = (key: keyof typeof form) => (event: { target: { value: string } }) =>

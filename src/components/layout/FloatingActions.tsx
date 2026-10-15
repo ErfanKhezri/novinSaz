@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useLocation } from "react-router-dom";
 import { site } from "../../data/site";
+import { useCompare } from "../../hooks/useCompare";
 import { whatsappLink } from "../../utils/whatsapp";
 
 /** WhatsApp button that gently pulses, and a back-to-top button after scrolling down. */
@@ -8,9 +10,19 @@ export function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (value) => setShowTop(value > 900));
+  const { pathname } = useLocation();
+  const { ids } = useCompare();
+
+  // Sit above the compare bar, and above the planner's product sheet on small screens.
+  const offset =
+    ids.length > 0 && pathname !== "/compare"
+      ? "bottom-40 sm:bottom-28"
+      : pathname === "/planner"
+        ? "bottom-48 lg:bottom-5"
+        : "bottom-5";
 
   return (
-    <div className="fixed bottom-5 left-5 z-40 flex flex-col items-center gap-3">
+    <div className={`fixed left-5 z-40 flex flex-col items-center gap-3 transition-[bottom] duration-300 ${offset}`}>
       <AnimatePresence>
         {showTop && (
           <motion.button
