@@ -2,25 +2,32 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  darkMode: "class",
   theme: {
     colors: {
       transparent: "transparent",
       current: "currentColor",
+      white: "#FFFFFF",
       paper: "#FFFFFF",
-      canvas: "#F7F7F5",
+      canvas: "#F2F4F9",
       line: "#EAEAEA",
       ink: "#1F2328",
-      muted: "#6B7280",
+      muted: "#4B5563",
       navy: {
         50: "#EEF1F7",
         100: "#DCE2EE",
+        300: "#8FA3CC",
         700: "#24365C",
         900: "#14213D",
       },
       gold: {
         50: "#FBF5E1",
+        200: "#EED98F",
         500: "#C9A227",
         600: "#A8861C",
+      },
+      sky: {
+        200: "#B9D5F7",
       },
       success: {
         50: "#EDF3EC",
@@ -58,18 +65,14 @@ export default {
       },
       boxShadow: {
         soft: "0 2px 8px rgba(20, 33, 61, 0.04)",
+        glass: "inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 8px 32px -8px rgba(20, 33, 61, 0.12)",
+        "glass-strong": "inset 0 1px 0 0 rgba(255, 255, 255, 0.6), 0 16px 48px -12px rgba(20, 33, 61, 0.18)",
+      },
+      blur: {
+        blob: "80px",
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.16, 1, 0.3, 1)",
-      },
-      keyframes: {
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(12px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-      },
-      animation: {
-        "fade-up": "fade-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both",
       },
     },
   },
