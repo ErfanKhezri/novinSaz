@@ -25,41 +25,6 @@ export const useCases = [
   },
 ];
 
-export const boothPackages = [
-  {
-    name: "غرفه اقتصادی",
-    size: "مناسب غرفه ۹ متری",
-    items: [
-      { slug: "counter", quantity: 1 },
-      { slug: "bar-stool", quantity: 2 },
-      { slug: "partition", quantity: 1 },
-    ],
-  },
-  {
-    name: "غرفه مذاکره",
-    size: "مناسب غرفه ۱۸ متری",
-    highlighted: true,
-    items: [
-      { slug: "counter", quantity: 1 },
-      { slug: "bar-stool", quantity: 2 },
-      { slug: "round-glass-table", quantity: 1 },
-      { slug: "eames-chair", quantity: 4 },
-      { slug: "tv-55", quantity: 1 },
-    ],
-  },
-  {
-    name: "غرفه پذیرایی",
-    size: "مناسب غرفه ۲۴ متری به بالا",
-    items: [
-      { slug: "counter", quantity: 1 },
-      { slug: "half-set-sofa", quantity: 1 },
-      { slug: "side-table", quantity: 1 },
-      { slug: "tv-55", quantity: 1 },
-      { slug: "partition", quantity: 2 },
-    ],
-  },
-];
-
 export const steps = [
   { title: "انتخاب محصول", text: "محصولات را ببینید، قیمت روزانه و چهار روزه را مقایسه کنید و به لیست اجاره اضافه کنید." },
   { title: "ثبت درخواست", text: "لیست را در واتس‌اپ بفرستید؛ موجودی را همان روز بررسی و پیش‌فاکتور ارسال می‌کنیم." },

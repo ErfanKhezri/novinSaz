@@ -21,6 +21,8 @@ export const products: Product[] = [
     pricePerDay: 180000,
     pricePer4Days: 540000,
     image: image("Bar+Stool"),
+    widthCm: 45,
+    depthCm: 45,
   },
   {
     id: "2",
@@ -38,6 +40,9 @@ export const products: Product[] = [
     pricePerDay: 650000,
     pricePer4Days: 1950000,
     image: image("Counter"),
+    widthCm: 120,
+    depthCm: 50,
+    model: "/models/counter.glb",
   },
   {
     id: "3",
@@ -55,6 +60,8 @@ export const products: Product[] = [
     pricePerDay: 900000,
     pricePer4Days: 2700000,
     image: image("Sofa+Set"),
+    widthCm: 220,
+    depthCm: 160,
   },
   {
     id: "4",
@@ -72,6 +79,9 @@ export const products: Product[] = [
     pricePerDay: 1200000,
     pricePer4Days: 3600000,
     image: image("TV+55"),
+    widthCm: 125,
+    depthCm: 50,
+    model: "/models/tv.glb",
   },
   {
     id: "5",
@@ -88,6 +98,8 @@ export const products: Product[] = [
     pricePerDay: 150000,
     pricePer4Days: 450000,
     image: image("Side+Table"),
+    widthCm: 50,
+    depthCm: 50,
   },
   {
     id: "6",
@@ -105,6 +117,8 @@ export const products: Product[] = [
     pricePerDay: 250000,
     pricePer4Days: 750000,
     image: image("Glass+Table"),
+    widthCm: 80,
+    depthCm: 80,
   },
   {
     id: "7",
@@ -122,6 +136,8 @@ export const products: Product[] = [
     pricePerDay: 120000,
     pricePer4Days: 360000,
     image: image("Eames+Chair"),
+    widthCm: 46,
+    depthCm: 55,
   },
   {
     id: "8",
@@ -139,6 +155,8 @@ export const products: Product[] = [
     pricePerDay: 220000,
     pricePer4Days: 660000,
     image: image("Partition"),
+    widthCm: 150,
+    depthCm: 40,
   },
   {
     id: "9",
@@ -155,6 +173,8 @@ export const products: Product[] = [
     pricePerDay: 60000,
     pricePer4Days: 180000,
     image: image("Folding+Chair"),
+    widthCm: 44,
+    depthCm: 48,
   },
 ];
 

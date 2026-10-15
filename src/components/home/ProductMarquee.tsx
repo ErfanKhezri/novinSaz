@@ -16,8 +16,8 @@ export function ProductMarquee() {
       >
         {items.map((product, index) => (
           <li key={`${product.id}-${index}`} dir="rtl" className="flex items-center gap-3 whitespace-nowrap">
-            <span className="h-2 w-2 rounded-full bg-gold-500" aria-hidden="true" />
-            <Link to={`/products/${product.slug}`} className="font-bold text-navy-900 hover:text-gold-600">
+            <span className="h-2 w-2 rounded-full bg-accent-500" aria-hidden="true" />
+            <Link to={`/products/${product.slug}`} className="font-bold text-navy-900 hover:text-accent-600">
               {product.name}
             </Link>
             <span className="text-small text-muted">از {formatPrice(product.pricePerDay)} / روز</span>

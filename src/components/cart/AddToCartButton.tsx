@@ -1,21 +1,21 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { useRentalList } from "../../hooks/useRentalList";
+import { useCart } from "../../hooks/useCart";
 import { Button } from "../ui/Button";
 
-type AddToListButtonProps = {
-  slug: string;
+type AddToCartButtonProps = {
+  productId: string;
   quantity?: number;
   variant?: "primary" | "accent" | "outline";
   className?: string;
 };
 
-export function AddToListButton({ slug, quantity = 1, variant = "primary", className = "" }: AddToListButtonProps) {
-  const { add } = useRentalList();
+export function AddToCartButton({ productId, quantity = 1, variant = "primary", className = "" }: AddToCartButtonProps) {
+  const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleClick = () => {
-    add(slug, quantity);
+    addItem(productId, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
   };
@@ -30,7 +30,7 @@ export function AddToListButton({ slug, quantity = 1, variant = "primary", class
           exit={{ y: -16, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          {added ? "به لیست اضافه شد" : "افزودن به لیست اجاره"}
+          {added ? "به سبد اضافه شد" : "افزودن به سبد اجاره"}
         </motion.span>
       </AnimatePresence>
     </Button>

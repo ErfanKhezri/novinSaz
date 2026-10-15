@@ -8,8 +8,10 @@ import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { categories, products } from "../data/products";
 import { formatNumber } from "../utils/formatPrice";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Products() {
+  usePageMeta("محصولات", "فهرست محصولات قابل اجاره نوین ساز با قیمت روزانه و چهار روزه: صندلی، میز، مبلمان، تلویزیون و پاراوان.");
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get("category") ?? "همه";
   const query = searchParams.get("q") ?? "";

@@ -2,7 +2,7 @@ import { useRef, type PointerEvent } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { categories, products } from "../../data/products";
 import { site } from "../../data/site";
-import { useRentalList } from "../../hooks/useRentalList";
+import { useCart } from "../../hooks/useCart";
 import { formatNumber } from "../../utils/formatPrice";
 import { whatsappLink } from "../../utils/whatsapp";
 import { AnimatedNumber } from "../ui/AnimatedNumber";
@@ -33,7 +33,7 @@ const floatingChips = [
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const { open } = useRentalList();
+  const { openDrawer } = useCart();
 
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -70,8 +70,8 @@ export function Hero() {
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/60 px-4 py-1.5 text-small font-medium text-navy-900 backdrop-blur"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-500 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
             </span>
             اجاره روزانه و چهار روزه در {site.city}
           </motion.p>
@@ -114,8 +114,8 @@ export function Hero() {
                 ←
               </span>
             </ButtonLink>
-            <Button variant="outline" onClick={open}>
-              ساخت لیست اجاره
+            <Button variant="outline" onClick={openDrawer}>
+              سبد اجاره
             </Button>
             <a
               href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان غرفه راهنمایی می‌خواهم.`)}

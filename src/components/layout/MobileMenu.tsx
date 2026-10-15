@@ -3,8 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { NavLink } from "react-router-dom";
 import { site } from "../../data/site";
 import { overlayFade, slideInFromRight } from "../../utils/motion";
-import { whatsappLink } from "../../utils/whatsapp";
-import { ButtonAnchor } from "../ui/Button";
+import { ButtonLink } from "../ui/Button";
 import { GlassPanel } from "../ui/GlassPanel";
 import { navLinks } from "./navLinks";
 
@@ -21,7 +20,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="منو">
+        <div className="fixed inset-0 z-50 xl:hidden" role="dialog" aria-modal="true" aria-label="منو">
           <motion.div
             className="absolute inset-0 bg-navy-900/30"
             variants={overlayFade}
@@ -52,7 +51,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               </button>
             </div>
 
-            <nav aria-label="منوی موبایل">
+            <nav aria-label="منوی موبایل" className="-mx-1 flex-1 overflow-y-auto px-1">
               <ul className="flex flex-col">
                 {navLinks.map((link) => (
                   <li key={link.to}>
@@ -61,7 +60,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                       end={link.to === "/"}
                       onClick={onClose}
                       className={({ isActive }) =>
-                        `block border-b border-white/60 py-4 text-lead font-medium ${
+                        `block border-b border-white/60 py-3 text-lead font-medium ${
                           isActive ? "font-bold text-navy-900" : "text-navy-700"
                         }`
                       }
@@ -73,15 +72,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               </ul>
             </nav>
 
-            <ButtonAnchor
-              href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
-              target="_blank"
-              rel="noreferrer"
-              variant="accent"
-              className="mt-auto"
-            >
-              مشاوره در واتس‌اپ
-            </ButtonAnchor>
+            <ButtonLink to="/quote" onClick={onClose} variant="accent" className="mt-auto">
+              پیش‌فاکتور
+            </ButtonLink>
           </GlassPanel>
         </div>
       )}

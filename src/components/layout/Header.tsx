@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../../data/site";
-import { whatsappLink } from "../../utils/whatsapp";
-import { RentalListButton } from "../rental/RentalListButton";
-import { ButtonAnchor } from "../ui/Button";
+import { CartButton } from "../cart/CartButton";
+import { FavoritesLink } from "./FavoritesLink";
+import { ButtonLink } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
 import { MobileMenu } from "./MobileMenu";
@@ -22,16 +22,16 @@ export function Header() {
       <header className="sticky top-0 z-40 px-3 pt-3">
         <GlassPanel
           variant={scrolled ? "strong" : "light"}
-          className={`mx-auto max-w-content ${scrolled ? "md:backdrop-blur-2xl" : ""}`}
+          className={`mx-auto max-w-content xl:max-w-[80rem] ${scrolled ? "md:backdrop-blur-2xl" : ""}`}
         >
           <Container className="flex h-14 items-center justify-between gap-6 sm:px-5">
             <Link to="/" className="flex items-center gap-2 text-h3 font-extrabold text-navy-900">
-              <span className="h-6 w-6 rounded-sm bg-gold-500" aria-hidden="true" />
+              <span className="h-6 w-6 rounded-sm bg-accent-500" aria-hidden="true" />
               {site.name}
             </Link>
 
-            <nav className="hidden md:block" aria-label="منوی اصلی">
-              <ul className="flex items-center gap-8">
+            <nav className="hidden xl:block" aria-label="منوی اصلی">
+              <ul className="flex items-center gap-5">
                 {navLinks.map((link) => (
                   <li key={link.to}>
                     <NavLink
@@ -51,21 +51,16 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <RentalListButton />
-              <ButtonAnchor
-                href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
-                target="_blank"
-                rel="noreferrer"
-                variant="accent"
-                className="hidden min-h-10 px-5 md:inline-flex"
-              >
-                مشاوره در واتس‌اپ
-              </ButtonAnchor>
+              <FavoritesLink />
+              <CartButton />
+              <ButtonLink to="/quote" variant="accent" className="hidden min-h-10 px-5 sm:inline-flex">
+                پیش‌فاکتور
+              </ButtonLink>
 
               <button
                 type="button"
                 onClick={() => setMenuOpen(true)}
-                className="flex h-10 w-10 items-center justify-center rounded border border-white/50 bg-white/40 md:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded border border-white/50 bg-white/40 xl:hidden"
                 aria-label="باز کردن منو"
                 aria-expanded={menuOpen}
               >

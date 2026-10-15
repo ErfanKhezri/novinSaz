@@ -4,6 +4,7 @@ import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { site } from "../data/site";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const services = [
   { title: "تجهیز غرفه نمایشگاهی", text: "کانتر، صندلی، مبلمان، میز و پاراوان برای غرفه‌های هر اندازه." },
@@ -20,6 +21,7 @@ const reasons = [
 ];
 
 export function About() {
+  usePageMeta("درباره ما");
   return (
     <>
       <Section>
@@ -56,7 +58,7 @@ export function About() {
             {reasons.map((reason) => (
               <li key={reason.title}>
                 <Card className="h-full p-6">
-                  <span className="block h-1 w-10 rounded-full bg-gold-500" aria-hidden="true" />
+                  <span className="block h-1 w-10 rounded-full bg-accent-500" aria-hidden="true" />
                   <h3 className="mt-4 text-h3 font-bold text-navy-900">{reason.title}</h3>
                   <p className="mt-2 text-muted">{reason.text}</p>
                 </Card>

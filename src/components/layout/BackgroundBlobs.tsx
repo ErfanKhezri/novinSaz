@@ -7,7 +7,7 @@ const blobs = [
     duration: 28,
   },
   {
-    className: "-left-20 top-1/3 h-[20rem] w-[20rem] bg-gold-200 md:h-[32rem] md:w-[32rem]",
+    className: "-left-20 top-1/3 h-[20rem] w-[20rem] bg-accent-200 md:h-[32rem] md:w-[32rem]",
     drift: { x: [0, 70, 20, 0], y: [0, -40, 40, 0] },
     duration: 34,
   },

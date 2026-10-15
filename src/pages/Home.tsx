@@ -1,22 +1,26 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { BoothPackages } from "../components/home/BoothPackages";
 import { CategoryIcon } from "../components/home/CategoryIcon";
+import { ExhibitionCard } from "../components/exhibition/ExhibitionCard";
 import { Faq } from "../components/home/Faq";
 import { Hero } from "../components/home/Hero";
 import { HowItWorks } from "../components/home/HowItWorks";
 import { ProductMarquee } from "../components/home/ProductMarquee";
 import { UseCaseTabs } from "../components/home/UseCaseTabs";
+import { PackageCard } from "../components/package/PackageCard";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { ButtonAnchor, ButtonLink } from "../components/ui/Button";
 import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
+import { packages } from "../data/packages";
 import { categories, featuredSlugs, products } from "../data/products";
 import { site } from "../data/site";
+import { upcomingExhibitions } from "../utils/exhibitions";
 import { formatNumber } from "../utils/formatPrice";
 import { staggeredFadeUp } from "../utils/motion";
 import { whatsappLink } from "../utils/whatsapp";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const featured = products.filter((product) => featuredSlugs.includes(product.slug)).slice(0, 3);
 
@@ -28,6 +32,7 @@ const promises = [
 ];
 
 export function Home() {
+  usePageMeta();
   return (
     <>
       <Hero />
@@ -45,6 +50,33 @@ export function Home() {
         </Container>
       </Section>
 
+      <Section>
+        <Container>
+          <SectionTitle title="نمایشگاه‌های پیش رو" subtitle="غرفه‌تان را از همین حالا برای تاریخ نمایشگاه رزرو کنید" />
+          <ul className="grid gap-5 md:grid-cols-3">
+            {upcomingExhibitions()
+              .slice(0, 3)
+              .map((exhibition, index) => (
+                <motion.li
+                  key={exhibition.id}
+                  custom={index}
+                  variants={staggeredFadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                >
+                  <ExhibitionCard exhibition={exhibition} compact />
+                </motion.li>
+              ))}
+          </ul>
+          <div className="mt-10 text-center">
+            <ButtonLink to="/exhibitions" variant="outline">
+              تقویم کامل نمایشگاه‌ها
+            </ButtonLink>
+          </div>
+        </Container>
+      </Section>
+
       <Section solid>
         <Container>
           <SectionTitle title="برای چه رویدادی آماده می‌شوید؟" subtitle="نوع رویداد را انتخاب کنید تا محصولات پیشنهادی را ببینید" />
@@ -54,8 +86,26 @@ export function Home() {
 
       <Section>
         <Container>
-          <SectionTitle title="بسته‌های آماده غرفه" subtitle="چند محصول که معمولاً با هم اجاره می‌شوند؛ با یک کلیک به لیست اضافه کنید" />
-          <BoothPackages />
+          <SectionTitle title="پکیج‌های آماده غرفه" subtitle="چند محصول که معمولاً با هم اجاره می‌شوند؛ یکجا و با تخفیف" />
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {packages.slice(0, 3).map((pack, index) => (
+              <motion.li
+                key={pack.id}
+                custom={index}
+                variants={staggeredFadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+              >
+                <PackageCard pack={pack} />
+              </motion.li>
+            ))}
+          </ul>
+          <div className="mt-10 text-center">
+            <ButtonLink to="/packages" variant="outline">
+              همه پکیج‌ها
+            </ButtonLink>
+          </div>
         </Container>
       </Section>
 
@@ -78,7 +128,7 @@ export function Home() {
                     to={`/products?category=${encodeURIComponent(category)}`}
                     className="group flex h-full flex-col items-center gap-3 rounded-lg border border-line bg-canvas p-6 text-center transition duration-300 hover:-translate-y-1 hover:border-navy-900 hover:bg-navy-900"
                   >
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-navy-900 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-gold-500">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-navy-900 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-accent-500 group-hover:text-paper">
                       <CategoryIcon category={category} />
                     </span>
                     <span className="font-bold text-navy-900 transition-colors group-hover:text-paper">{category}</span>
@@ -121,7 +171,7 @@ export function Home() {
                 viewport={{ once: true }}
                 className="rounded-lg border border-line bg-canvas p-5"
               >
-                <span className="block h-1 w-10 rounded-full bg-gold-500" aria-hidden="true" />
+                <span className="block h-1 w-10 rounded-full bg-accent-500" aria-hidden="true" />
                 <h3 className="mt-3 font-bold text-navy-900">{promise.title}</h3>
                 <p className="mt-1 text-small text-muted">{promise.text}</p>
               </motion.li>

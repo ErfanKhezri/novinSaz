@@ -1,29 +1,56 @@
+import { lazy } from "react";
 import { MotionConfig } from "motion/react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
-import { RentalListProvider } from "./context/RentalListContext";
+import { CartProvider } from "./context/CartContext";
+import { CompareProvider } from "./context/CompareContext";
+import { FavoritesProvider } from "./context/FavoritesContext";
 import { About } from "./pages/About";
+import { Compare } from "./pages/Compare";
 import { Contact } from "./pages/Contact";
+import { Exhibitions } from "./pages/Exhibitions";
+import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+import { PackageDetail } from "./pages/PackageDetail";
+import { Packages } from "./pages/Packages";
 import { ProductDetail } from "./pages/ProductDetail";
+import { Quote } from "./pages/Quote";
+import { Portfolio } from "./pages/Portfolio";
 import { Products } from "./pages/Products";
+
+// Heavy pages (drag and drop, date picker) load on demand.
+const Cart = lazy(() => import("./pages/Cart").then((module) => ({ default: module.Cart })));
+const Planner = lazy(() => import("./pages/Planner").then((module) => ({ default: module.Planner })));
 
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <RentalListProvider>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="products/:slug" element={<ProductDetail />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </RentalListProvider>
+      <CartProvider>
+        <FavoritesProvider>
+          <CompareProvider>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="products/:slug" element={<ProductDetail />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="packages" element={<Packages />} />
+                <Route path="packages/:slug" element={<PackageDetail />} />
+                <Route path="exhibitions" element={<Exhibitions />} />
+                <Route path="portfolio" element={<Portfolio />} />
+                <Route path="planner" element={<Planner />} />
+                <Route path="favorites" element={<Favorites />} />
+                <Route path="compare" element={<Compare />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="quote" element={<Quote />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </CompareProvider>
+        </FavoritesProvider>
+      </CartProvider>
     </MotionConfig>
   );
 }

@@ -15,7 +15,7 @@ export function HowItWorks() {
     <ol ref={ref} className="relative grid gap-5 md:grid-cols-4">
       <span className="absolute inset-x-[12%] top-11 hidden h-0.5 bg-navy-100 md:block" aria-hidden="true" />
       <motion.span
-        className="absolute inset-x-[12%] top-11 hidden h-0.5 origin-right bg-gold-500 md:block"
+        className="absolute inset-x-[12%] top-11 hidden h-0.5 origin-right bg-accent-500 md:block"
         style={{ scaleX: progress }}
         aria-hidden="true"
       />
@@ -31,7 +31,7 @@ export function HowItWorks() {
         >
           <Card className="h-full p-6 text-center">
             <motion.span
-              className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-navy-900 text-h3 font-bold text-gold-500"
+              className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-navy-900 text-h3 font-bold text-accent-200"
               whileInView={{ scale: [0.6, 1.15, 1] }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + index * 0.15, duration: 0.5 }}
