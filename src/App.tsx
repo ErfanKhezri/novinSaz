@@ -12,6 +12,7 @@ import { PackageDetail } from "./pages/PackageDetail";
 import { Packages } from "./pages/Packages";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Quote } from "./pages/Quote";
+import { Portfolio } from "./pages/Portfolio";
 import { Products } from "./pages/Products";
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="packages" element={<Packages />} />
             <Route path="packages/:slug" element={<PackageDetail />} />
             <Route path="exhibitions" element={<Exhibitions />} />
+            <Route path="portfolio" element={<Portfolio />} />
             <Route path="cart" element={<Cart />} />
             <Route path="quote" element={<Quote />} />
             <Route path="*" element={<NotFound />} />
