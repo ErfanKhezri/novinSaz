@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# نوین ساز — Novin Saz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for Novin Saz, a Tehran business renting exhibition-booth furniture
+(counters, bar stools, Eames chairs, half-set sofas, TVs, partitions, tables…)
+per day or as a four-day package.
 
-Currently, two official plugins are available:
+React 18 + TypeScript + Vite + Tailwind CSS v4, right-to-left Persian, React Router.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pnpm install
+pnpm dev       # http://localhost:5173
+pnpm build     # type-check + production build into dist/
+pnpm lint
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+SPA rewrites for deployment are in `vercel.json` (Vercel) and `public/_redirects` (Netlify).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Pages
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+| Route | What it is |
+| --- | --- |
+| `/` | Home: hero order slip, catalogue by category, featured product, how renting works, booth packages, about letter, FAQ, contact form |
+| `/products` | Full catalogue with category filter (`?category=seating`) |
+| `/products/:slug` | Product: description, specs, day / four-day price, live rental calculator, related items |
+| `/order` | Order slip: chosen items, shared rental duration, total; sends to WhatsApp or email |
+| `/about`, `/contact` | About the business; contact channels and form |
+
+## Structure
+
 ```
+src/
+  styles/index.css   design tokens (@theme: colours, five type steps, easing), shaped edges, motion
+  data/              all content: products, categories, site info, packages, FAQ (edit these, not components)
+  lib/               pricing (cheapest day / 4-day mix), Persian number formatting, order message
+  hooks/             useOrder (order slip context), useReveal (entrances), usePageTitle
+  components/
+    ui/              design-system primitives: Button, Container, Field, Photo, Price, Stepper
+    layout/          Header, Footer, Layout
+    product/         ProductArt (drawings), ProductPlate, PricePair, SpecList, RentalCalculator
+    order/           OrderProvider (persists to localStorage), OrderSlip
+    sections/        home-page sections
+  pages/             one file per route
+```
+
+### Adding a product
+
+Add an entry to `src/data/products.ts`. For a new drawing, add an `ArtId` in
+`src/data/types.ts` and its SVG in `components/product/ProductArt.tsx`, or replace the
+drawings with real photographs.
+
+## Before launch
+
+- Phone, WhatsApp number, email and address in `src/data/site.ts` are placeholders.
+- Prices, stock counts, dimensions and booth packages are sample data to confirm.
+- Product images are flat drawings; replace them with real product photography.
+- Atmosphere photos are hot-linked from picsum.photos (Unsplash licence, credited in the
+  footer); swap them for the business's own booth photos.
