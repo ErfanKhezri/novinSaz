@@ -1,3 +1,4 @@
+import { lazy, Suspense, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PriceTable } from "../components/product/PriceTable";
 import { RentalCalculator } from "../components/product/RentalCalculator";
@@ -14,9 +15,12 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import { whatsappLink } from "../utils/whatsapp";
 import { NotFound } from "./NotFound";
 
+const ModelViewer = lazy(() => import("../components/product/ModelViewer").then((module) => ({ default: module.ModelViewer })));
+
 export function ProductDetail() {
   const { slug } = useParams();
   const product = products.find((item) => item.slug === slug);
+  const [view, setView] = useState<"photo" | "3d">("photo");
   usePageMeta(product?.name ?? "محصول پیدا نشد", product?.description);
 
   if (!product) return <NotFound />;
@@ -41,13 +45,44 @@ export function ProductDetail() {
           </nav>
 
           <div className="grid gap-10 lg:grid-cols-2">
-            <img
-              src={product.image}
-              alt={product.name}
-              width={800}
-              height={600}
-              className="w-full rounded-lg border border-line bg-navy-50"
-            />
+            <div className="flex flex-col gap-3">
+              {product.model && (
+                <div role="tablist" aria-label="نمای محصول" className="flex gap-2">
+                  {(["photo", "3d"] as const).map((tab) => (
+                    <button
+                      key={tab}
+                      type="button"
+                      role="tab"
+                      aria-selected={view === tab}
+                      onClick={() => setView(tab)}
+                      className={`rounded-full border px-4 py-2 text-small font-bold transition-colors ${
+                        view === tab ? "border-navy-900 bg-navy-900 text-paper" : "border-line bg-paper text-navy-900 hover:border-navy-900"
+                      }`}
+                    >
+                      {tab === "photo" ? "تصویر" : "نمای سه‌بعدی"}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {view === "3d" && product.model ? (
+                <Suspense
+                  fallback={<div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-line bg-navy-50 text-muted">در حال بارگذاری مدل سه‌بعدی…</div>}
+                >
+                  <ModelViewer src={product.model} alt={`مدل سه‌بعدی ${product.name}`} poster={product.image} />
+                </Suspense>
+              ) : (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width={800}
+                  height={600}
+                  className="w-full rounded-lg border border-line bg-navy-50"
+                />
+              )}
+              {product.model && view === "3d" && (
+                <p className="text-caption text-muted">با انگشت یا ماوس بچرخانید؛ روی موبایل با دکمه AR محصول را در فضای خود ببینید.</p>
+              )}
+            </div>
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-start gap-3">

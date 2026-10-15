@@ -42,6 +42,7 @@ export const products: Product[] = [
     image: image("Counter"),
     widthCm: 120,
     depthCm: 50,
+    model: "/models/counter.glb",
   },
   {
     id: "3",
@@ -80,6 +81,7 @@ export const products: Product[] = [
     image: image("TV+55"),
     widthCm: 125,
     depthCm: 50,
+    model: "/models/tv.glb",
   },
   {
     id: "5",

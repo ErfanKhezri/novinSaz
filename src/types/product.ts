@@ -11,4 +11,6 @@ export type Product = {
   /** Footprint seen from above, used by the booth planner. */
   widthCm: number;
   depthCm: number;
+  /** Optional 3D model (.glb) in /public/models for the 3D/AR view. */
+  model?: string;
 };
