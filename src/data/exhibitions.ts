@@ -10,8 +10,6 @@ export type Exhibition = {
   image: string;
 };
 
-const image = (label: string) => `https://placehold.co/1200x700/24365C/FFFFFF?text=${label}`;
-
 /** Sample schedule; replace with the official calendar before launch. */
 export const exhibitions: Exhibition[] = [
   {
@@ -22,7 +20,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/06/10",
     endDate: "1405/06/13",
     category: "ساختمان",
-    image: image("Building+Expo"),
+    image: "/images/exhibitions/e1.svg",
   },
   {
     id: "e2",
@@ -32,7 +30,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/08/05",
     endDate: "1405/08/08",
     category: "مبلمان",
-    image: image("Office+Furniture"),
+    image: "/images/exhibitions/e2.svg",
   },
   {
     id: "e3",
@@ -42,7 +40,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/08/20",
     endDate: "1405/08/23",
     category: "غذایی",
-    image: image("Food+Expo"),
+    image: "/images/exhibitions/e3.svg",
   },
   {
     id: "e4",
@@ -52,7 +50,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/09/12",
     endDate: "1405/09/15",
     category: "فناوری",
-    image: image("Tech+Expo"),
+    image: "/images/exhibitions/e4.svg",
   },
   {
     id: "e5",
@@ -62,7 +60,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/10/02",
     endDate: "1405/10/05",
     category: "گردشگری",
-    image: image("Tourism+Expo"),
+    image: "/images/exhibitions/e5.svg",
   },
   {
     id: "e6",
@@ -72,7 +70,7 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/10/20",
     endDate: "1405/10/23",
     category: "پزشکی",
-    image: image("Medical+Expo"),
+    image: "/images/exhibitions/e6.svg",
   },
   {
     id: "e7",
@@ -82,6 +80,6 @@ export const exhibitions: Exhibition[] = [
     startDate: "1405/11/14",
     endDate: "1405/11/18",
     category: "فرهنگی",
-    image: image("Book+Fair"),
+    image: "/images/exhibitions/e7.svg",
   },
 ];

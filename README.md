@@ -55,9 +55,20 @@ Animations use the `motion` library; shared variants are in `utils/motion.ts`. W
 
 All state (cart, favorites, compare, planner) lives in React context + localStorage; there is no backend.
 
+## Brand
+
+The logo mark is the letter «ن» drawn as a booth seen from the front: the two walls and the floor
+form the bowl of the letter and the hanging sign is its dot.
+
+- `src/components/ui/Logo.tsx` — `Logo` (mark + wordmark) and `LogoMark`, with dark/light tones
+- `public/brand/logo-mark.svg`, `public/favicon.svg` — the mark
+- `public/brand/logo.png` (transparent) and `logo-on-navy.png` — full logo for print and social media
+- `public/apple-touch-icon.png`, `public/og-image.png` — home-screen icon and link preview image
+
 ## Editing content
 
-- Products: `src/data/products.ts` (replace the placehold.co `image` URLs with real photos).
+- Products: `src/data/products.ts`. Images in `public/images/` are minimal illustrations of the sample
+  data (products, packages, portfolio, exhibitions); replace them with real photos when available.
 - Contact details: `src/data/site.ts`.
 - Event tabs, steps and FAQ: `src/data/home.ts`.
 - Packages: `src/data/packages.ts` · Exhibitions (Jalali dates): `src/data/exhibitions.ts` · Portfolio: `src/data/projects.ts`.

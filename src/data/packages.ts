@@ -9,8 +9,6 @@ export type BoothPackage = {
   discountPercent: number;
 };
 
-const image = (label: string) => `https://placehold.co/1200x800/14213D/C9A227?text=${label}`;
-
 export const packages: BoothPackage[] = [
   {
     id: "p1",
@@ -18,7 +16,7 @@ export const packages: BoothPackage[] = [
     name: "غرفه ۹ متری پایه",
     description:
       "هر آنچه یک غرفه کوچک برای روز اول لازم دارد: کانتر پذیرش برای معرفی برند، دو صندلی جکدار برای پشت کانتر و پاراوان برای ساختن انبارک پشت غرفه.",
-    image: image("9m+Booth"),
+    image: "/images/packages/basic-9m-booth.svg",
     boothSize: "۳ × ۳ متر",
     items: [
       { productId: "2", quantity: 1 },
@@ -33,7 +31,7 @@ export const packages: BoothPackage[] = [
     name: "غرفه ۱۸ متری لوکس",
     description:
       "غرفه‌ای با فضای پذیرایی: کانتر و صندلی جکدار برای جلوی غرفه، مبل نیم‌ست و میز عسلی برای گفت‌وگوی آرام با مشتری و تلویزیون برای پخش ویدئوی معرفی.",
-    image: image("18m+Luxury"),
+    image: "/images/packages/luxury-18m-booth.svg",
     boothSize: "۳ × ۶ متر",
     items: [
       { productId: "2", quantity: 1 },
@@ -51,7 +49,7 @@ export const packages: BoothPackage[] = [
     name: "اتاق جلسه ۸ نفره",
     description:
       "دو میز شیشه‌ای گرد با هشت صندلی ایفلی برای جلسه یا مذاکره همزمان و یک تلویزیون برای ارائه. مناسب اتاق جلسه موقت در دفتر یا سالن همایش.",
-    image: image("Meeting+Room"),
+    image: "/images/packages/meeting-room-8.svg",
     boothSize: "حدود ۲۰ متر مربع",
     items: [
       { productId: "6", quantity: 2 },
@@ -66,7 +64,7 @@ export const packages: BoothPackage[] = [
     name: "میز پذیرش و انتظار",
     description:
       "برای لابی شرکت، شوروم یا ورودی همایش: کانتر پذیرش با یک صندلی جکدار، و گوشه انتظار با مبل نیم‌ست و میز عسلی.",
-    image: image("Reception"),
+    image: "/images/packages/reception-and-waiting.svg",
     boothSize: "حدود ۱۲ متر مربع",
     items: [
       { productId: "2", quantity: 1 },

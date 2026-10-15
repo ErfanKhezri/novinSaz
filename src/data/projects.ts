@@ -7,8 +7,8 @@ export type Project = {
   items: { productId: string; quantity: number }[];
 };
 
-const image = (label: string, width: number, height: number) =>
-  `https://placehold.co/${width}x${height}/DCE2EE/14213D?text=${label}`;
+const images = (id: string, count: number) =>
+  Array.from({ length: count }, (_, index) => `/images/projects/${id}-${index + 1}.svg`);
 
 /** Sample projects; replace with real booth photos and item lists. */
 export const projects: Project[] = [
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     title: "غرفه پذیرایی شرکت ساختمانی",
     exhibitionName: "نمایشگاه صنعت ساختمان",
     year: "۱۴۰۴",
-    images: [image("Lounge+Booth", 1200, 800), image("Lounge+Detail", 800, 1000), image("Lounge+Counter", 1200, 900)],
+    images: images("pr1", 3),
     items: [
       { productId: "2", quantity: 1 },
       { productId: "1", quantity: 2 },
@@ -30,7 +30,7 @@ export const projects: Project[] = [
     title: "غرفه مذاکره برند لوازم خانگی",
     exhibitionName: "نمایشگاه لوازم خانگی",
     year: "۱۴۰۴",
-    images: [image("Meeting+Booth", 800, 1000), image("Meeting+Table", 1200, 800)],
+    images: images("pr2", 2),
     items: [
       { productId: "6", quantity: 2 },
       { productId: "7", quantity: 8 },
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "سالن همایش ۱۲۰ نفره",
     exhibitionName: "همایش سالانه بیمه",
     year: "۱۴۰۴",
-    images: [image("Conference+Hall", 1200, 700), image("Conference+Stage", 1200, 900)],
+    images: images("pr3", 2),
     items: [
       { productId: "9", quantity: 120 },
       { productId: "4", quantity: 2 },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     title: "غرفه ۹ متری استارتاپ",
     exhibitionName: "نمایشگاه فناوری اطلاعات",
     year: "۱۴۰۵",
-    images: [image("Startup+Booth", 800, 1100), image("Startup+Screen", 1200, 800)],
+    images: images("pr4", 2),
     items: [
       { productId: "2", quantity: 1 },
       { productId: "1", quantity: 2 },
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     title: "شوروم موقت مبلمان اداری",
     exhibitionName: "رونمایی محصول در شوروم",
     year: "۱۴۰۵",
-    images: [image("Showroom", 1200, 800), image("Showroom+Corner", 800, 1000), image("Showroom+Sofa", 1200, 900)],
+    images: images("pr5", 3),
     items: [
       { productId: "3", quantity: 2 },
       { productId: "5", quantity: 2 },
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: "میز پذیرش و انتظار کنگره پزشکی",
     exhibitionName: "کنگره پزشکی",
     year: "۱۴۰۵",
-    images: [image("Reception", 1200, 900), image("Waiting+Area", 800, 1000)],
+    images: images("pr6", 2),
     items: [
       { productId: "2", quantity: 2 },
       { productId: "1", quantity: 2 },
