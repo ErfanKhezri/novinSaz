@@ -1,59 +1,35 @@
 # نوین ساز — Novin Saz
 
-Website for Novin Saz, a Tehran business renting exhibition-booth furniture
-(counters, bar stools, Eames chairs, half-set sofas, TVs, partitions, tables…)
-per day or as a four-day package.
+Website for Novin Saz: rental of furniture and equipment for exhibition booths,
+showrooms and meeting rooms. Persian, right-to-left, mobile-first.
 
-React 18 + TypeScript + Vite + Tailwind CSS v4, right-to-left Persian, React Router.
+Vite + React + TypeScript + Tailwind CSS v3 + React Router. No backend.
 
 ## Run
 
 ```bash
-pnpm install
-pnpm dev       # http://localhost:5173
-pnpm build     # type-check + production build into dist/
-pnpm lint
+npm install
+npm run dev
+npm run build
 ```
-
-SPA rewrites for deployment are in `vercel.json` (Vercel) and `public/_redirects` (Netlify).
-
-## Pages
-
-| Route | What it is |
-| --- | --- |
-| `/` | Home: hero order slip, catalogue by category, featured product, how renting works, booth packages, about letter, FAQ, contact form |
-| `/products` | Full catalogue with category filter (`?category=seating`) |
-| `/products/:slug` | Product: description, specs, day / four-day price, live rental calculator, related items |
-| `/order` | Order slip: chosen items, shared rental duration, total; sends to WhatsApp or email |
-| `/about`, `/contact` | About the business; contact channels and form |
 
 ## Structure
 
 ```
 src/
-  styles/index.css   design tokens (@theme: colours, five type steps, easing), shaped edges, motion
-  data/              all content: products, categories, site info, packages, FAQ (edit these, not components)
-  lib/               pricing (cheapest day / 4-day mix), Persian number formatting, order message
-  hooks/             useOrder (order slip context), useReveal (entrances), usePageTitle
-  components/
-    ui/              design-system primitives: Button, Container, Field, Photo, Price, Stepper
-    layout/          Header, Footer, Layout
-    product/         ProductArt (drawings), ProductPlate, PricePair, SpecList, RentalCalculator
-    order/           OrderProvider (persists to localStorage), OrderSlip
-    sections/        home-page sections
-  pages/             one file per route
+  components/ui/        Button, Card, Badge, Input, Textarea, Container, SectionTitle
+  components/layout/    Header, Footer, MobileMenu, Layout
+  components/product/   ProductCard, ProductGrid, PriceTable, CategoryFilter
+  pages/                Home, Products, ProductDetail, About, Contact, NotFound
+  data/products.ts      products and categories
+  data/site.ts          phone, WhatsApp, address, Instagram, working hours
+  types/product.ts      Product type
+  utils/                formatPrice (Persian digits, Toman), whatsapp link
 ```
 
-### Adding a product
+Design tokens (colours, font sizes, radius, spacing, motion) live in `tailwind.config.ts`.
 
-Add an entry to `src/data/products.ts`. For a new drawing, add an `ArtId` in
-`src/data/types.ts` and its SVG in `components/product/ProductArt.tsx`, or replace the
-drawings with real photographs.
+## Editing content
 
-## Before launch
-
-- Phone, WhatsApp number, email and address in `src/data/site.ts` are placeholders.
-- Prices, stock counts, dimensions and booth packages are sample data to confirm.
-- Product images are flat drawings; replace them with real product photography.
-- Atmosphere photos are hot-linked from picsum.photos (Unsplash licence, credited in the
-  footer); swap them for the business's own booth photos.
+- Products: `src/data/products.ts` (replace the placehold.co `image` URLs with real photos).
+- Contact details: `src/data/site.ts`.
