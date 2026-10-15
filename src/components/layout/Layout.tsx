@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { pageFade } from "../../utils/motion";
+import { RentalListDrawer } from "../rental/RentalListDrawer";
 import { BackgroundBlobs } from "./BackgroundBlobs";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -19,6 +20,7 @@ export function Layout() {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <RentalListDrawer />
     </div>
   );
 }

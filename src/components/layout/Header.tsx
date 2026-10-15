@@ -3,6 +3,7 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../../data/site";
 import { whatsappLink } from "../../utils/whatsapp";
+import { RentalListButton } from "../rental/RentalListButton";
 import { ButtonAnchor } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
@@ -49,27 +50,30 @@ export function Header() {
               </ul>
             </nav>
 
-            <ButtonAnchor
-              href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
-              target="_blank"
-              rel="noreferrer"
-              variant="accent"
-              className="hidden min-h-10 px-5 md:inline-flex"
-            >
-              مشاوره در واتس‌اپ
-            </ButtonAnchor>
+            <div className="flex items-center gap-2">
+              <RentalListButton />
+              <ButtonAnchor
+                href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
+                target="_blank"
+                rel="noreferrer"
+                variant="accent"
+                className="hidden min-h-10 px-5 md:inline-flex"
+              >
+                مشاوره در واتس‌اپ
+              </ButtonAnchor>
 
-            <button
-              type="button"
-              onClick={() => setMenuOpen(true)}
-              className="flex h-10 w-10 items-center justify-center rounded border border-white/50 bg-white/40 md:hidden"
-              aria-label="باز کردن منو"
-              aria-expanded={menuOpen}
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-navy-900" aria-hidden="true">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </button>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(true)}
+                className="flex h-10 w-10 items-center justify-center rounded border border-white/50 bg-white/40 md:hidden"
+                aria-label="باز کردن منو"
+                aria-expanded={menuOpen}
+              >
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-navy-900" aria-hidden="true">
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
           </Container>
         </GlassPanel>
       </header>
