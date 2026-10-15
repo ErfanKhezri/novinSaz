@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { PriceTable } from "../components/product/PriceTable";
+import { RentalCalculator } from "../components/product/RentalCalculator";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { Badge } from "../components/ui/Badge";
 import { ButtonAnchor } from "../components/ui/Button";
@@ -57,6 +58,8 @@ export function ProductDetail() {
               <ButtonAnchor href={whatsappLink(message)} target="_blank" rel="noreferrer" variant="accent">
                 ثبت درخواست اجاره
               </ButtonAnchor>
+
+              <RentalCalculator product={product} />
 
               <div>
                 <h2 className="mb-3 text-h3 font-bold text-navy-900">مشخصات</h2>

@@ -39,7 +39,19 @@ price table, filter bar and mobile menu, through `components/ui/GlassPanel.tsx`
 Animations use the `motion` library; shared variants are in `utils/motion.ts`. With
 `prefers-reduced-motion`, movement is turned off and only fades remain.
 
+## Features
+
+- Animated hero: an illustrated booth assembles itself and follows the pointer; rotating headline word,
+  counting stats, floating price chips, endless product ticker
+- Rental list: add products (or whole booth packages) with a quantity, set the number of days, see the
+  cheapest total (daily + four-day mix) and send the list to WhatsApp
+- Price calculator on every product page
+- Event tabs with suggested products, booth packages, four-step process, FAQ
+- Products page: search, category filter, sort by price
+- Scroll progress bar, floating WhatsApp and back-to-top buttons, 3D tilt on product cards
+
 ## Editing content
 
 - Products: `src/data/products.ts` (replace the placehold.co `image` URLs with real photos).
 - Contact details: `src/data/site.ts`.
+- Event tabs, booth packages, steps and FAQ: `src/data/home.ts`.

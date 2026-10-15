@@ -1,5 +1,6 @@
 export const site = {
   name: "نوین ساز",
+  city: "تهران",
   phone: "۰۲۱-۰۰۰۰۰۰۰۰",
   phoneLink: "tel:+982100000000",
   whatsapp: "989120000000",

@@ -1,50 +1,37 @@
+import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { BoothPackages } from "../components/home/BoothPackages";
+import { CategoryIcon } from "../components/home/CategoryIcon";
+import { Faq } from "../components/home/Faq";
+import { Hero } from "../components/home/Hero";
+import { HowItWorks } from "../components/home/HowItWorks";
+import { ProductMarquee } from "../components/home/ProductMarquee";
+import { UseCaseTabs } from "../components/home/UseCaseTabs";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { ButtonAnchor, ButtonLink } from "../components/ui/Button";
-import { Card } from "../components/ui/Card";
 import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { categories, featuredSlugs, products } from "../data/products";
 import { site } from "../data/site";
 import { formatNumber } from "../utils/formatPrice";
+import { staggeredFadeUp } from "../utils/motion";
 import { whatsappLink } from "../utils/whatsapp";
 
-const steps = [
-  { title: "انتخاب محصول", text: "محصولات را ببینید و قیمت روزانه یا چهار روزه هر کدام را مقایسه کنید." },
-  { title: "ثبت درخواست", text: "درخواست را در واتس‌اپ بفرستید؛ موجودی را بررسی و پیش‌فاکتور ارسال می‌کنیم." },
-  { title: "تحویل و جمع‌آوری", text: "در روز چیدمان در غرفه تحویل می‌دهیم و پس از پایان رویداد جمع‌آوری می‌کنیم." },
-];
-
 const featured = products.filter((product) => featuredSlugs.includes(product.slug)).slice(0, 3);
+
+const promises = [
+  { title: "قیمت شفاف", text: "قیمت روزانه و چهار روزه هر محصول از قبل روی سایت است." },
+  { title: "محصولات بازبینی‌شده", text: "هر محصول پیش از تحویل تمیز و بررسی می‌شود." },
+  { title: "تحویل به‌موقع", text: "اقلام پیش از شروع چیدمان در غرفه شما آماده است." },
+  { title: "پشتیبانی در رویداد", text: "در روزهای نمایشگاه برای جایگزینی در دسترسیم." },
+];
 
 export function Home() {
   return (
     <>
-      <Section className="!pb-section-sm">
-        <Container className="flex flex-col items-center py-section-sm text-center">
-          <h1 className="max-w-3xl text-h1 font-extrabold tracking-tight text-navy-900 sm:text-display">
-            اجاره مبلمان و تجهیزات برای غرفه نمایشگاهی
-          </h1>
-          <p className="mt-5 max-w-prose text-lead text-muted">
-            کانتر، صندلی، مبلمان، تلویزیون و پاراوان برای نمایشگاه، شوروم و اتاق جلسه؛ با اجاره روزانه
-            یا بسته چهار روزه و تحویل در محل.
-          </p>
-          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <ButtonLink to="/products" variant="primary">
-              مشاهده محصولات
-            </ButtonLink>
-            <ButtonAnchor
-              href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان غرفه راهنمایی می‌خواهم.`)}
-              target="_blank"
-              rel="noreferrer"
-              variant="outline"
-            >
-              مشاوره رایگان در واتس‌اپ
-            </ButtonAnchor>
-          </div>
-        </Container>
-      </Section>
+      <Hero />
+      <ProductMarquee />
 
       <Section>
         <Container>
@@ -52,7 +39,7 @@ export function Home() {
           <ProductGrid products={featured} />
           <div className="mt-10 text-center">
             <ButtonLink to="/products" variant="outline">
-              همه محصولات
+              همه {formatNumber(products.length)} محصول
             </ButtonLink>
           </div>
         </Container>
@@ -60,19 +47,44 @@ export function Home() {
 
       <Section solid>
         <Container>
+          <SectionTitle title="برای چه رویدادی آماده می‌شوید؟" subtitle="نوع رویداد را انتخاب کنید تا محصولات پیشنهادی را ببینید" />
+          <UseCaseTabs />
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionTitle title="بسته‌های آماده غرفه" subtitle="چند محصول که معمولاً با هم اجاره می‌شوند؛ با یک کلیک به لیست اضافه کنید" />
+          <BoothPackages />
+        </Container>
+      </Section>
+
+      <Section solid>
+        <Container>
           <SectionTitle title="دسته‌بندی‌ها" subtitle="محصول مورد نیازتان را سریع‌تر پیدا کنید" />
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               const count = products.filter((product) => product.category === category).length;
               return (
-                <li key={category}>
-                  <Link to={`/products?category=${encodeURIComponent(category)}`} className="group block h-full">
-                    <Card className="flex h-full flex-col gap-1 p-5 transition-colors group-hover:border-navy-900">
-                      <span className="font-bold text-navy-900">{category}</span>
-                      <span className="text-small text-muted">{formatNumber(count)} محصول</span>
-                    </Card>
+                <motion.li
+                  key={category}
+                  custom={index}
+                  variants={staggeredFadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <Link
+                    to={`/products?category=${encodeURIComponent(category)}`}
+                    className="group flex h-full flex-col items-center gap-3 rounded-lg border border-line bg-canvas p-6 text-center transition duration-300 hover:-translate-y-1 hover:border-navy-900 hover:bg-navy-900"
+                  >
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-navy-900 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-gold-500">
+                      <CategoryIcon category={category} />
+                    </span>
+                    <span className="font-bold text-navy-900 transition-colors group-hover:text-paper">{category}</span>
+                    <span className="text-small text-muted transition-colors group-hover:text-navy-100">{formatNumber(count)} محصول</span>
                   </Link>
-                </li>
+                </motion.li>
               );
             })}
           </ul>
@@ -81,58 +93,72 @@ export function Home() {
 
       <Section>
         <Container>
-          <SectionTitle title="اجاره در سه مرحله" subtitle="بدون دردسر، از انتخاب تا جمع‌آوری" />
-          <ol className="grid gap-5 md:grid-cols-3">
-            {steps.map((step, index) => (
-              <li key={step.title}>
-                <Card className="h-full p-6">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-50 font-bold text-gold-600">
-                    {formatNumber(index + 1)}
-                  </span>
-                  <h3 className="mt-4 text-h3 font-bold text-navy-900">{step.title}</h3>
-                  <p className="mt-2 text-muted">{step.text}</p>
-                </Card>
-              </li>
-            ))}
-          </ol>
+          <SectionTitle title="اجاره در چهار مرحله" subtitle="بدون دردسر، از انتخاب تا جمع‌آوری" />
+          <HowItWorks />
         </Container>
       </Section>
 
       <Section solid>
         <Container className="grid items-center gap-10 md:grid-cols-2">
           <div>
-            <h2 className="text-h2 font-extrabold text-navy-900 sm:text-h1">درباره {site.name}</h2>
+            <h2 className="text-h2 font-extrabold text-navy-900 sm:text-h1">چرا {site.name}؟</h2>
             <p className="mt-4 text-lead text-muted">
-              {site.name} مبلمان و تجهیزات موردنیاز غرفه‌های نمایشگاهی و شرکت‌ها را اجاره می‌دهد. همه
-              محصولات در انبار خودمان نگهداری و پیش از هر تحویل تمیز و بازبینی می‌شوند تا غرفه شما از
-              روز اول مرتب و آماده باشد.
+              {site.name} مبلمان و تجهیزات موردنیاز غرفه‌های نمایشگاهی و شرکت‌ها را اجاره می‌دهد تا بدون
+              خرید و نگهداری وسایل، فضایی مرتب و حرفه‌ای داشته باشید.
             </p>
             <ButtonLink to="/about" variant="outline" className="mt-6">
               بیشتر درباره ما
             </ButtonLink>
           </div>
-          <img
-            src="https://placehold.co/800x600/14213D/C9A227?text=Novin+Saz"
-            alt={`نمای غرفه چیده شده با مبلمان ${site.name}`}
-            loading="lazy"
-            width={800}
-            height={600}
-            className="w-full rounded-lg border border-line bg-navy-50"
-          />
+          <ul className="grid grid-cols-2 gap-3">
+            {promises.map((promise, index) => (
+              <motion.li
+                key={promise.title}
+                custom={index}
+                variants={staggeredFadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="rounded-lg border border-line bg-canvas p-5"
+              >
+                <span className="block h-1 w-10 rounded-full bg-gold-500" aria-hidden="true" />
+                <h3 className="mt-3 font-bold text-navy-900">{promise.title}</h3>
+                <p className="mt-1 text-small text-muted">{promise.text}</p>
+              </motion.li>
+            ))}
+          </ul>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <div className="flex flex-col items-center rounded-lg bg-navy-900 px-6 py-section-sm text-center">
-            <h2 className="text-h2 font-extrabold text-paper">برای رویداد بعدی‌تان آماده‌اید؟</h2>
-            <p className="mt-3 max-w-prose text-navy-100">
+          <SectionTitle title="سؤالات پرتکرار" />
+          <Faq />
+        </Container>
+      </Section>
+
+      <Section className="!pt-0">
+        <Container>
+          <div className="relative flex flex-col items-center overflow-hidden rounded-lg bg-navy-900 px-6 py-section-sm text-center">
+            <motion.span
+              className="absolute -inset-y-10 w-24 rotate-12 bg-white/10 blur-xl"
+              animate={{ x: ["-60vw", "60vw"] }}
+              transition={{ duration: 5, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+              aria-hidden="true"
+            />
+            <h2 className="relative text-h2 font-extrabold text-paper sm:text-h1">برای رویداد بعدی‌تان آماده‌اید؟</h2>
+            <p className="relative mt-3 max-w-prose text-navy-100">
               فهرست اقلام موردنیاز و تاریخ نمایشگاه را بفرستید؛ همان روز پیش‌فاکتور دریافت می‌کنید.
             </p>
-            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <ButtonLink to="/contact" variant="accent">
-                تماس با ما
-              </ButtonLink>
+            <div className="relative mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <ButtonAnchor
+                href={whatsappLink(`سلام ${site.name}، برای رویداد پیش رو مبلمان می‌خواهم.`)}
+                target="_blank"
+                rel="noreferrer"
+                variant="accent"
+              >
+                درخواست پیش‌فاکتور
+              </ButtonAnchor>
               <ButtonAnchor href={site.phoneLink} variant="outline">
                 تماس تلفنی: {site.phone}
               </ButtonAnchor>
