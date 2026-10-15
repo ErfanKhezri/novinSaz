@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { CategoryIcon } from "../components/home/CategoryIcon";
+import { ExhibitionCard } from "../components/exhibition/ExhibitionCard";
 import { Faq } from "../components/home/Faq";
 import { Hero } from "../components/home/Hero";
 import { HowItWorks } from "../components/home/HowItWorks";
@@ -15,6 +16,7 @@ import { SectionTitle } from "../components/ui/SectionTitle";
 import { packages } from "../data/packages";
 import { categories, featuredSlugs, products } from "../data/products";
 import { site } from "../data/site";
+import { upcomingExhibitions } from "../utils/exhibitions";
 import { formatNumber } from "../utils/formatPrice";
 import { staggeredFadeUp } from "../utils/motion";
 import { whatsappLink } from "../utils/whatsapp";
@@ -41,6 +43,33 @@ export function Home() {
           <div className="mt-10 text-center">
             <ButtonLink to="/products" variant="outline">
               همه {formatNumber(products.length)} محصول
+            </ButtonLink>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionTitle title="نمایشگاه‌های پیش رو" subtitle="غرفه‌تان را از همین حالا برای تاریخ نمایشگاه رزرو کنید" />
+          <ul className="grid gap-5 md:grid-cols-3">
+            {upcomingExhibitions()
+              .slice(0, 3)
+              .map((exhibition, index) => (
+                <motion.li
+                  key={exhibition.id}
+                  custom={index}
+                  variants={staggeredFadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                >
+                  <ExhibitionCard exhibition={exhibition} compact />
+                </motion.li>
+              ))}
+          </ul>
+          <div className="mt-10 text-center">
+            <ButtonLink to="/exhibitions" variant="outline">
+              تقویم کامل نمایشگاه‌ها
             </ButtonLink>
           </div>
         </Container>

@@ -21,7 +21,15 @@ export function Cart() {
     return (
       <Section>
         <Container className="flex flex-col items-center text-center">
-          <SectionTitle as="h1" title="سبد اجاره" subtitle="هنوز محصولی به سبد اضافه نکرده‌اید." />
+          <SectionTitle
+            as="h1"
+            title="سبد اجاره"
+            subtitle={
+              cart.exhibitionName
+                ? `تاریخ «${cart.exhibitionName}» ثبت شد؛ حالا محصولات یا یک پکیج آماده را انتخاب کنید.`
+                : "هنوز محصولی به سبد اضافه نکرده‌اید."
+            }
+          />
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink to="/products">مشاهده محصولات</ButtonLink>
             <ButtonLink to="/packages" variant="outline">
