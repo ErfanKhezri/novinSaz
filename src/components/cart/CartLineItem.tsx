@@ -30,11 +30,11 @@ export function CartLineItem({ line, compact = false }: CartLineItemProps) {
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
-            <Link to={`/products/${line.product.slug}`} className="font-bold text-navy-900 hover:text-gold-600">
+            <Link to={`/products/${line.product.slug}`} className="font-bold text-navy-900 hover:text-accent-600">
               {line.product.name}
             </Link>
             <span className="text-caption text-muted">{breakdownLabel(line.rental)}</span>
-            {line.discountPercent > 0 && <Badge tone="gold">تخفیف پکیج {formatNumber(line.discountPercent)}٪</Badge>}
+            {line.discountPercent > 0 && <Badge tone="accent">تخفیف پکیج {formatNumber(line.discountPercent)}٪</Badge>}
           </div>
           <div className="text-end">
             <span className="block text-small font-bold text-navy-900">{formatPrice(line.total)}</span>

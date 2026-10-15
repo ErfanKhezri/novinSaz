@@ -57,7 +57,7 @@ export function Cart() {
 
           <GlassPanel variant="strong" className="space-y-5 p-5 lg:sticky lg:top-24">
             {cart.exhibitionName && (
-              <div className="flex items-center justify-between gap-2 rounded bg-gold-50 px-3 py-2 text-small">
+              <div className="flex items-center justify-between gap-2 rounded bg-accent-50 px-3 py-2 text-small">
                 <span>
                   برای <strong className="text-navy-900">{cart.exhibitionName}</strong>
                 </span>

@@ -57,7 +57,7 @@ export function Contact() {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel="noreferrer"
-                      className="font-bold text-navy-900 transition-colors hover:text-gold-600"
+                      className="font-bold text-navy-900 transition-colors hover:text-accent-600"
                     >
                       {item.value}
                     </a>

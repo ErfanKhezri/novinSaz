@@ -23,7 +23,7 @@ export function CartButton() {
             initial={{ scale: 0.4, opacity: 0 }}
             animate={{ scale: 1, opacity: 1, transition: { type: "spring", stiffness: 500, damping: 15 } }}
             exit={{ scale: 0, opacity: 0 }}
-            className="absolute -left-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold-500 px-1 text-caption font-bold text-navy-900"
+            className="absolute -left-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent-500 px-1 text-caption font-bold text-paper"
           >
             {formatNumber(count)}
           </motion.span>

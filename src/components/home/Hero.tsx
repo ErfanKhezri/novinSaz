@@ -70,8 +70,8 @@ export function Hero() {
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/60 px-4 py-1.5 text-small font-medium text-navy-900 backdrop-blur"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-500 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
             </span>
             اجاره روزانه و چهار روزه در {site.city}
           </motion.p>

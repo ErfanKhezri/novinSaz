@@ -18,7 +18,7 @@ export function Packages() {
           title="پکیج‌های آماده"
           subtitle="محصولاتی که معمولاً با هم اجاره می‌شوند، یکجا و با تخفیف. تخفیف پکیج در سبد اجاره اعمال می‌شود."
         />
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {packages.map((pack, index) => (
             <motion.li key={pack.id} custom={index} variants={staggeredFadeUp} initial="hidden" animate="visible">
               <PackageCard pack={pack} />

@@ -126,7 +126,7 @@ export function Home() {
                     to={`/products?category=${encodeURIComponent(category)}`}
                     className="group flex h-full flex-col items-center gap-3 rounded-lg border border-line bg-canvas p-6 text-center transition duration-300 hover:-translate-y-1 hover:border-navy-900 hover:bg-navy-900"
                   >
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-navy-900 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-gold-500">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-navy-900 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-accent-500 group-hover:text-paper">
                       <CategoryIcon category={category} />
                     </span>
                     <span className="font-bold text-navy-900 transition-colors group-hover:text-paper">{category}</span>
@@ -169,7 +169,7 @@ export function Home() {
                 viewport={{ once: true }}
                 className="rounded-lg border border-line bg-canvas p-5"
               >
-                <span className="block h-1 w-10 rounded-full bg-gold-500" aria-hidden="true" />
+                <span className="block h-1 w-10 rounded-full bg-accent-500" aria-hidden="true" />
                 <h3 className="mt-3 font-bold text-navy-900">{promise.title}</h3>
                 <p className="mt-1 text-small text-muted">{promise.text}</p>
               </motion.li>

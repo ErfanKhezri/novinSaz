@@ -3,8 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { NavLink } from "react-router-dom";
 import { site } from "../../data/site";
 import { overlayFade, slideInFromRight } from "../../utils/motion";
-import { whatsappLink } from "../../utils/whatsapp";
-import { ButtonAnchor } from "../ui/Button";
+import { ButtonLink } from "../ui/Button";
 import { GlassPanel } from "../ui/GlassPanel";
 import { navLinks } from "./navLinks";
 
@@ -73,15 +72,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               </ul>
             </nav>
 
-            <ButtonAnchor
-              href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
-              target="_blank"
-              rel="noreferrer"
-              variant="accent"
-              className="mt-auto"
-            >
-              مشاوره در واتس‌اپ
-            </ButtonAnchor>
+            <ButtonLink to="/quote" onClick={onClose} variant="accent" className="mt-auto">
+              پیش‌فاکتور
+            </ButtonLink>
           </GlassPanel>
         </div>
       )}

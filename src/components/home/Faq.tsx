@@ -16,10 +16,10 @@ export function Faq() {
               type="button"
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start font-bold text-navy-900 transition-colors hover:text-gold-600"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start font-bold text-navy-900 transition-colors hover:text-accent-600"
             >
               {faq.question}
-              <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={spring} className="text-h2 leading-none text-gold-600" aria-hidden="true">
+              <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={spring} className="text-h2 leading-none text-accent-600" aria-hidden="true">
                 +
               </motion.span>
             </button>

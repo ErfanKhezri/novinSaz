@@ -16,7 +16,7 @@ export function RotatingWord({ words, interval = 2400 }: RotatingWordProps) {
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={words[index]}
-          className="col-start-1 row-start-1 text-gold-600"
+          className="col-start-1 row-start-1 text-accent-600"
           initial={{ y: "100%", opacity: 0, filter: "blur(6px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: "-100%", opacity: 0, filter: "blur(6px)" }}

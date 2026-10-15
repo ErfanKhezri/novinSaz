@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 import { site } from "../../data/site";
-import { whatsappLink } from "../../utils/whatsapp";
 import { CartButton } from "../cart/CartButton";
-import { ButtonAnchor } from "../ui/Button";
+import { ButtonLink } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
 import { MobileMenu } from "./MobileMenu";
@@ -26,7 +25,7 @@ export function Header() {
         >
           <Container className="flex h-14 items-center justify-between gap-6 sm:px-5">
             <Link to="/" className="flex items-center gap-2 text-h3 font-extrabold text-navy-900">
-              <span className="h-6 w-6 rounded-sm bg-gold-500" aria-hidden="true" />
+              <span className="h-6 w-6 rounded-sm bg-accent-500" aria-hidden="true" />
               {site.name}
             </Link>
 
@@ -52,15 +51,9 @@ export function Header() {
 
             <div className="flex items-center gap-2">
               <CartButton />
-              <ButtonAnchor
-                href={whatsappLink(`سلام ${site.name}، برای اجاره مبلمان سؤال دارم.`)}
-                target="_blank"
-                rel="noreferrer"
-                variant="accent"
-                className="hidden min-h-10 px-5 md:inline-flex"
-              >
-                مشاوره در واتس‌اپ
-              </ButtonAnchor>
+              <ButtonLink to="/quote" variant="accent" className="hidden min-h-10 px-5 md:inline-flex">
+                پیش‌فاکتور
+              </ButtonLink>
 
               <button
                 type="button"

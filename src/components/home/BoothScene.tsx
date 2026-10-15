@@ -35,11 +35,11 @@ export function BoothScene({ pointerX, pointerY }: BoothSceneProps) {
           <motion.g variants={drop} custom={1}>
             <path d="M40 330 L40 110 L260 40 L260 250 Z" className="fill-paper" />
             <path d="M260 40 L500 110 L500 330 L260 250 Z" className="fill-navy-900" />
-            <path d="M40 110 L260 40 L260 58 L40 128 Z" className="fill-gold-500" />
+            <path d="M40 110 L260 40 L260 58 L40 128 Z" className="fill-accent-500" />
           </motion.g>
           {/* logo on the dark wall */}
           <motion.g variants={drop} custom={2}>
-            <path d="M300 92 L460 140 L460 176 L300 128 Z" className="fill-gold-500" />
+            <path d="M300 92 L460 140 L460 176 L300 128 Z" className="fill-accent-200" />
             <path d="M318 112 L410 140" className="stroke-navy-900" strokeWidth="6" strokeLinecap="round" />
           </motion.g>
           {/* television */}
@@ -69,7 +69,7 @@ export function BoothScene({ pointerX, pointerY }: BoothSceneProps) {
             <path d="M200 268 L330 300 L330 380 L200 348 Z" className="fill-paper" />
             <path d="M330 300 L372 286 L372 366 L330 380 Z" className="fill-navy-100" />
             <path d="M200 268 L242 254 L372 286 L330 300 Z" className="fill-navy-900" />
-            <path d="M218 292 L312 315 L312 356 L218 333 Z" className="fill-gold-500" />
+            <path d="M218 292 L312 315 L312 356 L218 333 Z" className="fill-accent-500" />
             <path d="M236 310 L290 323" className="stroke-navy-900" strokeWidth="5" strokeLinecap="round" />
           </motion.g>
           {/* bar stools */}
@@ -79,7 +79,7 @@ export function BoothScene({ pointerX, pointerY }: BoothSceneProps) {
               <ellipse cx="392" cy="384" rx="18" ry="6" className="fill-navy-700" />
               <ellipse cx="392" cy="328" rx="20" ry="7" className="fill-navy-900" />
               <path d="M376 326 L378 296 Q392 290 406 296 L408 326 Z" className="fill-navy-900" />
-              <path d="M380 304 Q392 299 404 304 L404 312 Q392 307 380 312 Z" className="fill-gold-500" />
+              <path d="M380 304 Q392 299 404 304 L404 312 Q392 307 380 312 Z" className="fill-accent-500" />
             </motion.g>
           ))}
           {/* round table and chairs */}

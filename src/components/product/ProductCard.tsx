@@ -56,7 +56,7 @@ export function ProductCard({ product }: ProductCardProps) {
               variants={{ rest: { scale: 1 }, hover: { scale: 1.06 } }}
               transition={{ duration: 0.5 }}
             />
-            <span className="absolute right-2 top-2 rounded-full bg-gold-500 px-3 py-0.5 text-caption font-bold text-navy-900">
+            <span className="absolute right-2 top-2 rounded-full bg-accent-500 px-3 py-0.5 text-caption font-bold text-paper">
               {formatPrice(fourDaySaving(product))} تخفیف ۴ روزه
             </span>
           </div>

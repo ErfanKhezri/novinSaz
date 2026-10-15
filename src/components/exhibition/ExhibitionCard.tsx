@@ -28,7 +28,7 @@ export function ExhibitionCard({ exhibition, compact = false }: ExhibitionCardPr
       )}
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-navy-900 px-3 py-0.5 text-caption font-bold text-gold-500">
+          <span className="rounded-full bg-navy-900 px-3 py-0.5 text-caption font-bold text-accent-200">
             {countdownLabel(exhibition.startDate)}
           </span>
           <Badge>{exhibition.category}</Badge>

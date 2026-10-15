@@ -16,13 +16,13 @@ export function PackageCard({ pack }: PackageCardProps) {
     <GlassPanel variant="strong" whileHover={{ y: -6 }} className="flex h-full flex-col overflow-hidden p-2">
       <Link to={`/packages/${pack.slug}`} className="relative block overflow-hidden rounded">
         <img src={pack.image} alt={pack.name} loading="lazy" width={1200} height={800} className="aspect-[3/2] w-full bg-navy-50 object-cover" />
-        <span className="absolute right-2 top-2 rounded-full bg-gold-500 px-3 py-0.5 text-caption font-bold text-navy-900">
+        <span className="absolute right-2 top-2 rounded-full bg-accent-500 px-3 py-0.5 text-caption font-bold text-paper">
           {formatNumber(pack.discountPercent)}٪ تخفیف
         </span>
       </Link>
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-start justify-between gap-2">
-          <Link to={`/packages/${pack.slug}`} className="text-h3 font-extrabold text-navy-900 hover:text-gold-600">
+          <Link to={`/packages/${pack.slug}`} className="text-h3 font-extrabold text-navy-900 hover:text-accent-600">
             {pack.name}
           </Link>
           <Badge>{pack.boothSize}</Badge>

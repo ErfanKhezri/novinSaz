@@ -31,7 +31,7 @@ Design tokens (colours, font sizes, radius, spacing, glass shadows) live in `tai
 
 ## Design
 
-Liquid-glass style: frosted panels float over slowly drifting, blurred brand-colour blobs
+Liquid-glass style: frosted panels float over slowly drifting, blurred navy and blue blobs
 (`components/layout/BackgroundBlobs.tsx`). Glass is used only on the header, product cards,
 price table, filter bar and mobile menu, through `components/ui/GlassPanel.tsx`
 (`light` / `strong`). Page sections stay solid or transparent, never glass.

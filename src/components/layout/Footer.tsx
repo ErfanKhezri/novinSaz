@@ -9,7 +9,7 @@ export function Footer() {
       <Container className="grid gap-10 py-section-sm sm:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-3">
           <p className="flex items-center gap-2 text-h3 font-extrabold text-paper">
-            <span className="h-6 w-6 rounded-sm bg-gold-500" aria-hidden="true" />
+            <span className="h-6 w-6 rounded-sm bg-accent-200" aria-hidden="true" />
             {site.name}
           </p>
           <p className="text-small">
@@ -22,7 +22,7 @@ export function Footer() {
           <ul className="flex flex-col gap-2 text-small">
             {navLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="transition-colors hover:text-gold-500">
+                <Link to={link.to} className="transition-colors hover:text-paper">
                   {link.label}
                 </Link>
               </li>
@@ -34,7 +34,7 @@ export function Footer() {
           <h2 className="mb-4 text-body font-bold text-paper">تماس</h2>
           <ul className="flex flex-col gap-2 text-small">
             <li>
-              <a href={site.phoneLink} className="transition-colors hover:text-gold-500">
+              <a href={site.phoneLink} className="transition-colors hover:text-paper">
                 تلفن: {site.phone}
               </a>
             </li>
@@ -43,7 +43,7 @@ export function Footer() {
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-gold-500"
+                className="transition-colors hover:text-paper"
               >
                 واتس‌اپ: {site.whatsappDisplay}
               </a>
@@ -53,7 +53,7 @@ export function Footer() {
                 href={`https://instagram.com/${site.instagram}`}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-gold-500"
+                className="transition-colors hover:text-paper"
               >
                 اینستاگرام: {site.instagram}@
               </a>

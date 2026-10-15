@@ -47,7 +47,7 @@ export function Quote() {
         <header className="flex flex-wrap items-start justify-between gap-6 border-b-2 border-navy-900 pb-6">
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded bg-navy-900" aria-hidden="true">
-              <span className="h-5 w-5 rounded-sm bg-gold-500" />
+              <span className="h-5 w-5 rounded-sm bg-accent-200" />
             </span>
             <div>
               <p className="text-h2 font-extrabold text-navy-900">{site.name}</p>

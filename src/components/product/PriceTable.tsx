@@ -24,11 +24,11 @@ export function PriceTable({ pricePerDay, pricePer4Days }: PriceTableProps) {
             <th scope="row" className="px-5 py-4 text-start font-medium">یک روز</th>
             <td className="px-5 py-4 text-end font-bold text-navy-900">{formatPrice(pricePerDay)}</td>
           </tr>
-          <tr className="border-t border-white/70 bg-gold-50/70">
+          <tr className="border-t border-white/70 bg-accent-50/70">
             <th scope="row" className="px-5 py-4 text-start font-medium">
               <span className="flex flex-wrap items-center gap-2">
                 بسته چهار روزه
-                <Badge tone="gold">پیشنهاد ویژه</Badge>
+                <Badge tone="accent">پیشنهاد ویژه</Badge>
               </span>
             </th>
             <td className="px-5 py-4 text-end font-bold text-navy-900">{formatPrice(pricePer4Days)}</td>

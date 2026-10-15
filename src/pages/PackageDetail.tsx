@@ -39,7 +39,7 @@ export function PackageDetail() {
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="relative">
               <img src={pack.image} alt={pack.name} width={1200} height={800} className="w-full rounded-lg border border-line bg-navy-50" />
-              <span className="absolute right-3 top-3 rounded-full bg-gold-500 px-4 py-1 font-bold text-navy-900">
+              <span className="absolute right-3 top-3 rounded-full bg-accent-500 px-4 py-1 font-bold text-paper">
                 {formatNumber(pack.discountPercent)}٪ تخفیف پکیج
               </span>
             </div>
@@ -57,7 +57,7 @@ export function PackageDetail() {
                   {packageItems(pack).map((item) => (
                     <li key={item.productId} className="flex items-center gap-3 px-5 py-3">
                       <img src={item.product.image} alt="" className="h-12 w-12 rounded bg-navy-50 object-cover" />
-                      <Link to={`/products/${item.product.slug}`} className="flex-1 font-medium text-navy-900 hover:text-gold-600">
+                      <Link to={`/products/${item.product.slug}`} className="flex-1 font-medium text-navy-900 hover:text-accent-600">
                         {item.product.name}
                       </Link>
                       <span className="text-small text-muted">× {formatNumber(item.quantity)}</span>
