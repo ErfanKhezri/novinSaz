@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="نوین ساز">
+  <rect width="48" height="48" rx="12" fill="#14213D"/>
+  <path d="M10.5 15v9.5a13.5 11.5 0 0 0 27 0V15" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+  <rect x="20.5" y="12.5" width="7" height="7" rx="1.6" fill="#B7C5E2"/>
+</svg>

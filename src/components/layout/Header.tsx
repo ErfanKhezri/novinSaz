@@ -5,6 +5,7 @@ import { site } from "../../data/site";
 import { CartButton } from "../cart/CartButton";
 import { FavoritesLink } from "./FavoritesLink";
 import { ButtonLink } from "../ui/Button";
+import { Logo } from "../ui/Logo";
 import { Container } from "../ui/Container";
 import { GlassPanel } from "../ui/GlassPanel";
 import { MobileMenu } from "./MobileMenu";
@@ -25,9 +26,8 @@ export function Header() {
           className={`mx-auto max-w-content xl:max-w-[80rem] ${scrolled ? "md:backdrop-blur-2xl" : ""}`}
         >
           <Container className="flex h-14 items-center justify-between gap-6 sm:px-5">
-            <Link to="/" className="flex items-center gap-2 text-h3 font-extrabold text-navy-900">
-              <span className="h-6 w-6 rounded-sm bg-accent-500" aria-hidden="true" />
-              {site.name}
+            <Link to="/" aria-label={`${site.name}، صفحه اصلی`}>
+              <Logo />
             </Link>
 
             <nav className="hidden xl:block" aria-label="منوی اصلی">
