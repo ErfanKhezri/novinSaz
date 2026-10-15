@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { NavLink } from "react-router-dom";
-import { site } from "../../data/site";
 import { overlayFade, slideInFromRight } from "../../utils/motion";
 import { ButtonLink } from "../ui/Button";
 import { GlassPanel } from "../ui/GlassPanel";
+import { Logo } from "../ui/Logo";
 import { navLinks } from "./navLinks";
 
 type MobileMenuProps = {
@@ -38,7 +38,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             exit="exit"
           >
             <div className="flex items-center justify-between">
-              <span className="text-h3 font-extrabold text-navy-900">{site.name}</span>
+              <Logo />
               <button
                 type="button"
                 onClick={onClose}

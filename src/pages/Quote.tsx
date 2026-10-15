@@ -1,5 +1,6 @@
 import { ButtonAnchor, ButtonLink, Button } from "../components/ui/Button";
 import { Container } from "../components/ui/Container";
+import { LogoMark } from "../components/ui/Logo";
 import { site } from "../data/site";
 import { useCart } from "../hooks/useCart";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -46,9 +47,7 @@ export function Quote() {
       <article className="mx-auto max-w-4xl rounded-lg border border-line bg-paper p-6 sm:p-10 print:max-w-none print:rounded-none print:border-0 print:p-0">
         <header className="flex flex-wrap items-start justify-between gap-6 border-b-2 border-navy-900 pb-6">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded bg-navy-900" aria-hidden="true">
-              <span className="h-5 w-5 rounded-sm bg-accent-200" />
-            </span>
+            <LogoMark className="h-12 w-12" />
             <div>
               <p className="text-h2 font-extrabold text-navy-900">{site.name}</p>
               <p className="text-small text-muted">اجاره مبلمان و تجهیزات نمایشگاهی</p>

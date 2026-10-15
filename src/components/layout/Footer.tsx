@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { site } from "../../data/site";
 import { Container } from "../ui/Container";
+import { Logo } from "../ui/Logo";
 import { navLinks } from "./navLinks";
 
 export function Footer() {
@@ -8,10 +9,7 @@ export function Footer() {
     <footer className="bg-navy-900 text-navy-100">
       <Container className="grid gap-10 py-section-sm sm:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-3">
-          <p className="flex items-center gap-2 text-h3 font-extrabold text-paper">
-            <span className="h-6 w-6 rounded-sm bg-accent-200" aria-hidden="true" />
-            {site.name}
-          </p>
+          <Logo tone="light" showTagline />
           <p className="text-small">
             اجاره روزانه و چهار روزه مبلمان و تجهیزات برای غرفه‌های نمایشگاهی، شوروم و اتاق جلسه.
           </p>
