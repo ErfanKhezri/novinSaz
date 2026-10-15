@@ -12,7 +12,7 @@ type BadgeProps = { tone?: Tone; children: ReactNode };
 
 export function Badge({ tone = "navy", children }: BadgeProps) {
   return (
-    <span className={`inline-flex items-center rounded-full px-3 py-0.5 text-caption font-medium ${tones[tone]}`}>
+    <span className={`inline-flex w-fit items-center rounded-full px-3 py-0.5 text-caption font-medium ${tones[tone]}`}>
       {children}
     </span>
   );
